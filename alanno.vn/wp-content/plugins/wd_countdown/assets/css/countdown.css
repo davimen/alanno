@@ -1,0 +1,53 @@
+/* Countdown */
+.count_holder_big .count_holder_small {
+  display: none;
+}
+.count_holder_small {
+  background-color: #fefefe;
+  padding: 10px;
+  position: relative;
+  width: 240px;
+  z-index: 10000;
+  display: block;
+  border: 1px solid #e5e5e5;
+  border-top: 0;
+  display: inline-block;
+}
+.count_holder_small.hover{
+  position: absolute;
+}
+.count_holder_small:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 0 0 4px #e36355 inset;
+}
+.count_info {
+  float: none;
+  font-size: 15px;
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.countdown-row {
+  clear: both;
+  width: 100%;
+  text-align: center;
+}
+.countdown-section {
+  display: block;
+  float: left;
+  font-size: 12px;
+  text-align: center;
+  width: 25%;
+}
+.countdown-amount {
+  font-size: 24px;
+  display: block;
+  color: #e36355;
+}

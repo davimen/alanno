@@ -1,0 +1,81 @@
+
+/* ---------------------------------------------------------------- 
+   =QUOTE------------------------------------------------------- */   
+.quote-style{
+	padding:20px;
+	border:1px solid #ccc;
+	margin-bottom:10px;
+}
+/* ---------------------------------------------------------------- 
+   =CHECKLIST---------------------------------------------------- */
+.shortcode-icon-list{
+	/*font-size:14px;line-height:0;*/
+}
+.shortcode-icon-list i{
+	margin-right:10px
+}
+.shortcode-icon-list ul li,.shortcode-icon-list ol li{list-style:none;}
+/* ---------------------------------------------------------------- 
+   =TAB -------------------------------------------------------- */ 
+.tabbable{
+	padding:10px 0;
+}   
+.tabbable .tab-pane{
+	padding:20px;
+	border:1px solid #ccc;
+}
+/* ---------------------------------------------------------------- 
+   =SHORTCODE ICON -------------------------------------------------------- */ 
+.fa-2x{
+	font-size:20px;line-height:20px;
+	padding:2px 5px;
+}   
+.fa-3x{
+	font-size:26px;line-height:28px;
+	padding:5px 10px;
+}
+.fa-3x{
+	font-size:36px;line-height:36px;
+	padding:10px 15px;
+}
+.fa-4x{
+	font-size:46px;line-height:46px;
+	padding:10px 15px;
+}
+
+
+/* ---------------------------------------------------------------- 
+   =SHORTCODE RECENT BLOGS ------------------------------------- */ 
+/*.shortcode-recent-blogs {
+	margin-left:-15px;margin-right:-15px;
+}
+
+.shortcode-recent-blogs .item{list-style:none;line-height:18px;margin-bottom:10px;}
+
+.shortcode-recent-blogs .item a.thumbnail{background:#ccc;}
+
+.shortcode-recent-blogs .item .image {
+	display:inline-block;width:40%;
+	padding-right:30px;
+	float:left;
+}
+
+.shortcode-recent-blogs .item .detail{
+	width:60%;float:left
+}
+.shortcode-recent-blogs .info-detail{
+	display:inline-block;
+	width:100%;margin: 0 0 10px 0;
+}
+.shortcode-recent-blogs .info-detail > div{display:inline-block;float:left;margin:5px 0 5px 10px;}
+.shortcode-recent-blogs .info-detail > div:first-child{margin:5px 0 5px 0}
+.shortcode-recent-blogs .info-detail > div i{margin-right:10px;font-size:12px;line-height:14px;}
+.shortcode-recent-blogs .item .heading-title{
+	margin:0 0 10px 0;padding:0;
+	display:inline-block;width:100%;
+}
+
+.shortcode-recent-blogs .item .heading-title  a{
+	font-size:20px;line-height:24px;text-transform:uppercase;
+	padding:0;margin:0;
+}*/

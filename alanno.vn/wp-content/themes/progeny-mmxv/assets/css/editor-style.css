@@ -1,0 +1,172 @@
+/*!
+ * Theme Name: Progeny MMXV
+ * Description: Used to style the TinyMCE editor.
+ */
+
+
+/* Block Grid
+------------------------------------------------------------------------------*/
+
+.block-grid {
+	margin: 0 7.6923%;
+}
+
+.block-grid-item {
+	display: inline-block;
+	float: left;
+	margin: 0;
+	padding-bottom: 4.25%;
+	padding-top: 0;
+	vertical-align: top;
+	width: 100%;
+}
+
+.block-grid-item.has-post-thumbnail {
+	padding-top: 0;
+}
+
+.block-grid-item:first-child {
+	margin-top: 7.6923%;
+}
+
+.block-grid-item:nth-of-type(n) {
+	clear: none;
+}
+
+.block-grid-item:nth-of-type(1n+1) {
+	clear: both;
+}
+
+.block-grid-item-thumbnail {
+	display: block;
+	margin-bottom: 20px;
+	overflow: hidden;
+	padding-top: 100%;
+	position: relative;
+}
+
+.block-grid-item-thumbnail:hover,
+.block-grid-item-thumbnail:focus {
+	opacity: 0.85;
+}
+
+.block-grid-item-thumbnail img {
+	display: block;
+	position: absolute;
+	top: 0;
+}
+
+.block-grid-item-title {
+	font-size: 19px;
+	font-size: 1.9rem;
+	margin-bottom: 0;
+}
+
+.block-grid-item-meta {
+	padding-bottom: 0;
+}
+
+.block-grid--16x9 .block-grid-item-thumbnail {
+	padding-top: 56.25%;
+}
+
+
+/* Block List
+------------------------------------------------------------------------------*/
+
+.block-list {
+	list-style: none;
+	margin: 0 7.6923%;
+}
+
+.block-list-item {
+	margin: 0;
+}
+
+.block-list-item:first-child {
+	margin-top: 7.6923%;
+}
+
+.block-list-item,
+.block-list-item.has-post-thumbnail {
+	padding: 4.6923% 7.6923%;
+}
+
+.block-list-item-date {
+	margin-bottom: 0;
+	position: absolute;
+	top: 0;
+}
+
+.block-list-item-date a {
+	background-color: #333;
+	color: #fff;
+	display: block;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 12px;
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	line-height: 1.5;
+	padding: 0.5em 1.25em;
+	text-transform: uppercase;
+}
+
+.block-list-item-date a:hover,
+.block-list-item-date a:focus {
+	color: #fff;
+	opacity: 0.7;
+}
+
+.block-list-item-title {
+	line-height: 1.210526316;
+}
+
+.block-list-item-content {
+	font-size: 16px;
+	font-size: 1.6rem;
+	margin-bottom: 0;
+	margin-top: 0.5em;
+}
+
+.block-list-item-content > :last-child {
+	margin-bottom: 0;
+}
+
+
+/* Buttons
+------------------------------------------------------------------------------*/
+
+.button {
+	background-color: #333;
+	border-radius: 0;
+	color: #fff;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 12px;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: normal;
+	margin: 0;
+	max-width: 100%;
+	padding: 0.7917em 1.5em;
+	text-transform: uppercase;
+	vertical-align: baseline;
+}
+
+.button:hover {
+	background-color: #707070;
+	background-color: rgba(51, 51, 51, 0.7);
+	color: #fff;
+}
+
+body {
+	background-color: #fff;
+	margin: 9px 10px;
+	max-width: 640px;
+	padding: 0;
+	word-wrap: break-word;
+}
+
+body.post-type-page {
+	max-width: 660px;
+}

@@ -1,0 +1,369 @@
+
+/*==============================================================*/
+/*              STYLE FOR SHORTCODE PORTFOLIO                   */
+/*==============================================================*/
+#portfolio-container{padding-bottom:20px}
+.item-portfolio .opacity_0 {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.item-portfolio .opacity_6 {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+/* FILTER */
+#portfolio-galleries .portfolio-filter {
+	overflow:hidden;
+	text-align: center;
+}
+
+#portfolio-galleries .portfolio-filter li {
+	position:relative;
+	list-style:none;
+	float:none;
+	margin:0;
+	height:44px;
+	line-height:44px;
+	display: inline-block
+}
+
+#portfolio-galleries .portfolio-filter li a {
+    position: relative;
+    line-height: 20px;
+    text-transform: capitalize;
+    padding: 13px 15px;
+	opacity:0.8;
+	filter: alpha( opacity=80)
+}
+
+#portfolio-galleries .portfolio-filter li:hover a {
+	opacity:1;
+	filter: alpha( opacity=100)
+}
+
+#portfolio-galleries .portfolio-filter li.active a {
+	cursor:text;
+	color:#ed764f;
+	opacity:1;
+	filter: alpha( opacity=100);
+	font-weight: 700;
+}
+
+.padding #portfolio-galleries-holder .item-portfolio > div {
+	padding:0;
+}
+
+.item-portfolio  .thumbnail{
+	margin: 0
+}
+.item-portfolio .thumb-holder .thumb-tag{
+	background-color: #4a4954;
+	text-align:center;
+	padding: 29px 10px 30px;
+	/*transition:background-color 600ms ease-in-out 0s;-moz-transition:background-color 600ms ease-in-out 0s;-webkit-transition:background-color 600ms ease-in-out 0s;*/s
+}
+.item-portfolio:nth-child(2n) .thumb-tag{ 
+	background-color: #3c3b48
+} 
+.thumb-holder:hover .thumb-tag {
+	background-color: #fff
+}
+
+/* STYLE FOR PORTFOLIO ITEM */
+.item-portfolio{ padding: 0 }
+.item-portfolio .post-title {
+	padding:0;margin:0;
+	font-size:14px;
+	font-weight: 400;
+	color:#fff;
+	line-height:18px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.item-portfolio .post-title a {	
+	color:#fff;
+	margin:0 0 15px;
+	font-weight: 700;
+}
+.thumb-holder:hover .post-title a {
+	color: #666
+}
+
+.item-portfolio .post-title a:hover {
+	color:#000;
+}
+.portfilio_cats{ 	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;}
+
+/* STYLE FOR HOVER */
+
+#portfolio-galleries-holder {
+	margin:0;
+	overflow:hidden;
+}
+#portfolio-galleries-holder .item-portfolio .thumb-image img {
+	margin:0;
+}
+.item-portfolio .thumb-holder {
+    position: relative;
+}
+.item-portfolio .thumb-holder .thumb-image.post-item {
+    position: relative;
+    overflow: hidden;
+}
+.item-portfolio .thumb-holder .thumb-image.post-item .image {
+    overflow: hidden;
+    width: 100%!important;
+    *width: auto!important;
+}
+
+.item-portfolio .thumb-holder .thumb-image.post-item .image img {
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+
+.item-portfolio .thumb-image-hover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.item-portfolio .thumb-image-hover .background {
+    background-color: #737077;
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.thumb-image-hover .icons {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.item-portfolio .thumb-image-hover .link-gallery,
+.item-portfolio .thumb-image-hover .thumb-image,
+.item-portfolio .thumb-image-hover .thumb-video {
+	position: absolute;
+    top: 0;
+    left: 0;
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;	
+	color: #fff;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border: 1px solid #fff;
+	border-radius:0!important;-moz-border-radius:0!important;-webkit-border-radius:0!important;
+	box-shadow:none!important;-moz-box-shadow:none!important;-webkit-box-shadow:none!important;
+}
+
+.item-portfolio .thumb-image-hover .link-gallery:hover,
+.item-portfolio .thumb-image-hover .thumb-image:hover,
+.item-portfolio .thumb-image-hover .thumb-video:hover {
+   color: #ed764f;
+   border-color: #ed764f
+}
+.item-portfolio .thumb-image-hover a.thumb-image:before{	 
+	 content: "\f002"; 
+	 font: 13px/27px 'FontAwesome';
+}
+.item-portfolio .thumb-image-hover a.link-gallery:before{	 
+	 content: "\f0c1";
+	 font: 13px/27px 'FontAwesome';
+}
+.item-portfolio .thumb-image-hover a.thumb-video:before{
+	 content: "\f04b";
+	 font: 13px/27px 'FontAwesome';
+}
+/* NAVIGATION */
+
+.portfolio-wide-style #portfolio-galleries .portfolio-filter{
+	text-align: left
+}
+.portfolio-wide-style #portfolio-galleries .portfolio-filter li a{
+	padding-left: 0;
+	padding-right: 0;
+	margin-right: 30px
+}
+
+.portfolio-wide-style #portfolio-galleries-holder{
+	margin: 0 -15px
+}
+.portfolio-wide-style .item-portfolio{
+	padding: 0 15px 30px;
+	text-align: center
+}
+.portfolio-wide-style .item-portfolio .post-title {
+	padding: 20px 25px 10px;
+}
+
+
+/* LIGHT BOX */
+.fancybox-overlay {
+    overflow-x: hidden!important;
+}
+
+.fancybox-skin {
+    padding: 0!important;
+}
+
+.fancybox-overlay .fancybox-skin {
+    background: none!important;
+}
+
+.fancybox-overlay .fancybox-skin {
+    padding: 0!important;
+    border-radius: 0!important;
+}
+
+.fancybox-overlay .fancybox-prev-clone {
+    left: 30px;
+    background-color: #fff;
+}
+
+.fancybox-overlay .fancybox-next-clone {
+    right: 30px;
+    background-color: #fff;
+}
+
+.fancybox-overlay .fancybox-prev-clone ,.fancybox-next-clone {
+    visibility: visible;
+    position: absolute;
+    z-index: 10000;
+    top: 50%;
+    margin-top: -46px;
+    display: block;
+    width: 46px;
+    height: 46px;
+    transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+}
+
+.fancybox-overlay .fancybox-prev-clone span {
+    display: block;
+    background: url(../images/lightbox.png) no-repeat -13px 1px;
+    width: 46px;
+    height: 46px;
+}
+
+.fancybox-overlay .fancybox-next-clone span {
+    display: block;
+    background: url(../images/lightbox.png) no-repeat -79px 1px;
+    width: 46px;
+    height: 46px;
+}
+
+.fancybox-overlay .fancybox-close-clone {
+    position: absolute;
+    z-index: 10000;
+    right: 30px;
+    top: 30px;
+    width: 46px;
+    height: 46px;
+    background: #111 url(../images/lightbox.png) no-repeat -46px 0;
+    display: block;
+}
+
+.fancybox-overlay .fancybox-title-clone {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    visibility: visible;
+    color: #3F3F3F;
+    font-size: 16px;
+    font-family: georgia;
+}
+
+.fancybox-overlay .fancybox-title-clone span.child {
+    margin-right: 0;
+    padding: 0;
+    background: none;
+    color: #3F3F3F;
+    font-weight: normal;
+    border-radius: 0;
+    text-shadow: none;
+    -moz-text-shadow: none;
+    -webkit-text-shadow: none;
+    -o-text-shadow: none;
+}
+
+.fancybox-overlay .fancybox-opened {
+    z-index: 100;
+}
+
+.fancybox-image {
+    display: block!important;
+}
+
+.fancybox-skin {
+    background-color: pink;
+    width: 60px!important;
+    display: block;
+}
+
+.fancybox-wrap {
+    z-index: 10000!important;
+    position: absolute;
+    border: 1px solid #fff!important;
+    display: block;
+    box-sizing: border-box;
+}
+
+.fancybox-close-clone {
+    display: inline-block!important;
+    z-index: 10000000!important;
+    background-color: #fff!important;
+    position: absolute;
+}
+
+.fancybox-outer {
+    border: 1px solid blue;
+    width: 50px!important;
+    display: block;
+    background-color: blue;
+}
+
+.fancybox-image {
+    position: relative!important;
+    z-index: 10000!important;
+}
+
+body div.pp_woocommerce a.pp_expand, body div.pp_woocommerce a.pp_contract {
+	display: none !important;
+}
+
+
+/* ====================================================================== */
+/*                          RESPONSIVE                                    */
+/* ====================================================================== */
+
+@media 
+only screen and (max-width-device-width: 767px),
+only screen and (max-width: 767px) {
+	#portfolio-container .end_content .count_project {
+		display:none;
+	}
+	.hover-default.thumb-image-hover {
+		display:none!important;
+	}
+}

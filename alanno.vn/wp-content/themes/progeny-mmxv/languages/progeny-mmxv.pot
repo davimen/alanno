@@ -1,0 +1,149 @@
+# Copyright (C) 2016 AudioTheme
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Progeny MMXV 1.2.4\n"
+"Report-Msgid-Bugs-To: https://audiotheme.com/support/\n"
+"POT-Creation-Date: 2016-09-15 13:37:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: audiotheme/archive-gig.php:36
+msgid "Gig venue details are missing or incomplete."
+msgstr ""
+
+#: audiotheme/archive-gig.php:37
+msgid "Edit Gig"
+msgstr ""
+
+#: audiotheme/archive-gig.php:70 audiotheme/archive-record.php:63
+#: audiotheme/archive-video.php:48
+msgid "Previous page"
+msgstr ""
+
+#: audiotheme/archive-gig.php:71 audiotheme/archive-record.php:64
+#: audiotheme/archive-video.php:49
+msgid "Next page"
+msgstr ""
+
+#: audiotheme/archive-gig.php:72 audiotheme/archive-record.php:65
+#: audiotheme/archive-video.php:50
+msgid "Page"
+msgstr ""
+
+#: audiotheme/single-gig.php:37
+msgid "TBD"
+msgstr ""
+
+#: audiotheme/single-gig.php:44 includes/plugins/audiotheme.php:168
+msgid "Tickets"
+msgstr ""
+
+#: audiotheme/single-gig.php:52
+msgid "Address"
+msgstr ""
+
+#: audiotheme/single-gig.php:64
+msgid "Phone"
+msgstr ""
+
+#: audiotheme/single-gig.php:69
+msgid "Website"
+msgstr ""
+
+#: audiotheme/single-record.php:45
+msgid "Released"
+msgstr ""
+
+#: audiotheme/single-record.php:52
+msgid "Genre"
+msgstr ""
+
+#: audiotheme/single-record.php:62 audiotheme/single-track.php:56
+msgid "Purchase"
+msgstr ""
+
+#: audiotheme/single-record.php:79
+msgid "Track List"
+msgstr ""
+
+#: audiotheme/single-record.php:86 audiotheme/single-track.php:50
+msgid "Download"
+msgstr ""
+
+#: audiotheme/single-track.php:46
+msgid "Track Links"
+msgstr ""
+
+#: includes/vendor/class-audiotheme-themenotice.php:38
+msgid ""
+"The AudioTheme plugin should be installed and activated for this theme to "
+"display properly."
+msgstr ""
+
+#: includes/vendor/class-audiotheme-themenotice.php:39
+msgid "Activate now"
+msgstr ""
+
+#: includes/vendor/class-audiotheme-themenotice.php:40
+msgid "Find out more"
+msgstr ""
+
+#: includes/vendor/class-audiotheme-themenotice.php:41
+msgid "Dismiss"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Twenty Fifteen child theme with unique grid and list page template layouts. "
+"Display page children in a unique grid or list view. With AudioTheme "
+"support included, you can nicely display display your music, videos, and "
+"gigs."
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Grid Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "List Page"
+msgstr ""
+
+#: audiotheme/parts/content-none.php:27
+msgctxt "post type label; add post type link"
+msgid "Ready to publish your first %1$s? <a href=\"%2$s\">Get started here</a>."
+msgstr ""
+
+#: audiotheme/parts/content-none.php:38
+msgctxt "post type label"
+msgid "There are currently not any %s available."
+msgstr ""
+
+#: includes/template-tags.php:52
+msgctxt "archive template label"
+msgid "There are currently not any %s available."
+msgstr ""
+
+#: includes/template-tags.php:59
+#. translators: there is a space at the begining of this sentence.
+msgctxt "archive template label; create page link"
+msgid ""
+" Create a <a href=\"%1$s\">new page</a> with this page as its <a "
+"href=\"%2$s\">parent</a>."
+msgstr ""
