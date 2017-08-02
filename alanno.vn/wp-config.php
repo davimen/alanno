@@ -23,7 +23,7 @@
 define('DB_NAME', 'toanprint_alonadev');
 
 /** MySQL database username */
-define('DB_USER', 'toanprint_user');
+define('DB_USER', 'toanprint_user'); 
 
 /** MySQL database password */
 define('DB_PASSWORD', 'GHBxi27iF7');
