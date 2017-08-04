@@ -1,0 +1,365 @@
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<!-- multistep form -->
+<div id="msform_wrap">
+    <form id="msform">
+    	<!-- progressbar -->
+    	<ul id="progressbar">
+    		<li class="active">Nơi Nhận Hàng</li>
+            <li>Người Nhận Hàng</li>
+    		<li>Hình Thức Thanh Toán</li>
+    		<li>Thông Tin Xuất Hóa Đơn</li>
+            <li>Hoàn Tất</li>
+    	</ul>
+    	<!-- fieldsets -->
+    	<fieldset>
+    		<h2 class="fs-title">Hỉnh Thức Nhận Hàng</h2>
+    		<div class="fs-subtitle">Chấp nhận giao hàng tận nơi khu vực nội thành TP.HCM.
+                <span class="txt_red">(Ngoại trừ những khu vực sau: Huyện Bình Chánh, Huyện Cần Giờ, Huyện Củ Chi, Huyện Hóc Môn, Quận 12, Quận 9, Quận Bình Tân, Quận Tân Phú, Quận Thủ Đức)</span>
+                <ul>
+                    <li>Quy định về giao hàng tận nơi:
+                        <ul>
+                            <li>Giá trị đơn hàng < 200.000đ hoặc giá trị đơn hàng > 10.000.000đ: Khách hàng cần thanh toán trước 100%</li>
+                            <li>Khách hàng cần chọn giao hàng ngay từ khi đặt hàng.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Giao miễn phí:</li>
+                    <ul>
+                        <li>Giá trị đơn hàng > 100.000đ</li>
+                        <li>KH thanh toán trước 100%</li>
+                        <li>Chỉ giao tới cổng (không lên lầu, không gửi xe, không vào chành)</li>
+                    </ul>
+                </ul>
+                <ul>
+                    <li>Giao có phí:</li>
+                    <ul>
+                        <li>Giao hàng và thu tiền: 20.000đ/đơn hàng</li>
+                        <li>Giao lên lầu/gửi xe và chành xe: Phụ thu +20.000đ</li>
+                    </ul>
+                </ul>
+                <ul>
+                    <li>Thời gian giao hàng:</li>
+                    <ul>
+                        <li>Theo giờ hành chánh</li>
+                        <li>Cộng thêm 6 tiếng kể từ khi báo có hàng</li>
+                    </ul>
+                </ul>
+            </div>
+    		<select id="chose_province">
+                <option value="hcm">Hồ Chí Minh</option>
+                <option value="#">...</option>
+                <option value="#">...</option>
+                <option value="#">...</option>
+            </select>
+            
+    		<input type="button" name="next" class="next action-button" value="Next" />
+    	</fieldset>
+        <!-- fieldsets -->
+    	<fieldset>
+    		<h2 class="fs-title">Người Nhận Hàng</h2>
+    		<div class="info_receiver">
+                <h2 class="fs-title">Thông Tin Người Nhận</h2>
+                <table class="tb_info_receiver"> 
+                    <tbody>
+                    <tr>
+                        <td class="td_tit"> Tên người nhận :</td>
+                        <td class="td_input"><input id="txtTenNguoiNhan" type="text" class="text-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_tit">Đia Chỉ :</td>
+                        <td><input id="txtDiaChiNguoiNhan" type="text" class="text-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_tit">Tỉnh/Thành Phố :</td>
+                        <td><select class="province_address text-input" alias="Tỉnh/Thành Phố" style="width:100%" id="ftinhthanhnguoinhan" disabled="">
+                               <option value="79" selected="selected">TP.HCM</option>
+                               <option value="01">Hà Nội</option>
+                               <option value="74">Bình Dương</option>
+                               <option value="75">Đồng Nai</option>
+                               <option value="89">An Giang</option>
+                               <option value="77">Bà Rịa - Vũng Tàu</option>
+                               <option value="24">Bắc Giang</option>
+                               <option value="06">Bắc Kạn</option>
+                               <option value="95">Bạc Liêu</option>
+                               <option value="27">Bắc Ninh</option>
+                               <option value="83">Bến Tre</option>
+                               <option value="52">Bình Định</option>
+                               <option value="70">Bình Phước</option>
+                               <option value="60">Bình Thuận</option>
+                               <option value="96">Cà Mau</option>
+                               <option value="92">Cần Thơ</option>
+                               <option value="04">Cao Bằng</option>
+                               <option value="48">Đà Nẵng</option>
+                               <option value="66">Đắk Lắk</option>
+                               <option value="67">Đắk Nông</option>
+                               <option value="11">Điện Biên</option>
+                               <option value="87">Đồng Tháp</option>
+                               <option value="64">Gia Lai</option>
+                               <option value="02">Hà Giang</option>
+                               <option value="35">Hà Nam</option>
+                               <option value="42">Hà Tĩnh</option>
+                               <option value="30">Hải Dương</option>
+                               <option value="31">Hải Phòng</option>
+                               <option value="93">Hậu Giang</option>
+                               <option value="17">Hòa Bình</option>
+                               <option value="33">Hưng Yên</option>
+                               <option value="56">Khánh Hòa</option>
+                               <option value="91">Kiên Giang</option>
+                               <option value="62">Kon Tum</option>
+                               <option value="12">Lai Châu</option>
+                               <option value="68">Lâm Đồng</option>
+                               <option value="20">Lạng Sơn</option>
+                               <option value="10">Lào Cai</option>
+                               <option value="80">Long An</option>
+                               <option value="36">Nam Định</option>
+                               <option value="40">Nghệ An</option>
+                               <option value="37">Ninh Bình</option>
+                               <option value="58">Ninh Thuận</option>
+                               <option value="25">Phú Thọ</option>
+                               <option value="54">Phú Yên</option>
+                               <option value="44">Quảng Bình</option>
+                               <option value="49">Quảng Nam</option>
+                               <option value="51">Quảng Ngãi</option>
+                               <option value="22">Quảng Ninh</option>
+                               <option value="45">Quảng Trị</option>
+                               <option value="94">Sóc Trăng</option>
+                               <option value="14">Sơn La</option>
+                               <option value="72">Tây Ninh</option>
+                               <option value="34">Thái Bình</option>
+                               <option value="19">Thái Nguyên</option>
+                               <option value="38">Thanh Hóa</option>
+                               <option value="46">Thừa Thiên Huế</option>
+                               <option value="82">Tiền Giang</option>
+                               <option value="84">Trà Vinh</option>
+                               <option value="08">Tuyên Quang</option>
+                               <option value="86">Vĩnh Long</option>
+                               <option value="26">Vĩnh Phúc</option>
+                               <option value="15">Yên Bái</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_tit">Quận/Huyện:</td>
+                        <td>
+                            <select class="district_address text-input" alias="Quận/Huyện" style="width:100%" id="fhuyennguoinhan">
+                               <option value="0">--- Chọn Quận/Huyện ---</option>
+                               <option value="786">Huyện Nhà Bè</option>
+                               <option value="760">Quận 1</option>
+                               <option value="771">Quận 10</option>
+                               <option value="772">Quận 11</option>
+                               <option value="769">Quận 2</option>
+                               <option value="770">Quận 3</option>
+                               <option value="773">Quận 4</option>
+                               <option value="774">Quận 5</option>
+                               <option value="775">Quận 6</option>
+                               <option value="778">Quận 7</option>
+                               <option value="776">Quận 8</option>
+                               <option value="765">Quận Bình Thạnh</option>
+                               <option value="764">Quận Gò Vấp</option>
+                               <option value="768">Quận Phú Nhuận</option>
+                               <option value="766">Quận Tân Bình</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_tit">Phường/Xã:</td>
+                        <td>
+                            <select class="ward_address text-input" alias="Phường/Xã" style="width:100%" id="fkhuvucnguoinhan">
+                                <option value="0">--- Chọn Phường/Xã ---</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_tit">Số điện thoại:</td>
+                        <td><input id="txtSoDienThoaiNguoiNhan" type="text" class="text-input" style="width:100%"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+    		<input type="button" name="next" class="next action-button" value="Next" />
+    	</fieldset>
+        <!-- fieldsets -->
+    	<fieldset>
+    		<h2 class="fs-title">Hình Thức Thanh Toán</h2>
+    		<h3 class="fs-subtitle">Your presence on the social network</h3>
+            <div class="divPayment" title="Chọn hình thức thanh toán" style="">
+                <table style="width:100%; margin: 10px auto;text-align:center;">
+                    <tbody>
+                        <tr>
+                            <td style="width:110px">
+                                <input type="radio" name="ThanhToan" id="optTM" value="1" tabindex="-1">
+                                <label for="optTM">Tiền mặt</label>
+                            </td>
+                            <td style="width:140px">
+                                <input type="radio" name="ThanhToan" id="optCK" value="2" tabindex="-1">
+                                <label for="optCK">Chuyển khoản</label>
+                            </td>
+                            <td style="width:220px">
+                                <input type="radio" name="ThanhToan" id="optATM" value="3" tabindex="-1">
+                                <label for="optATM">Thanh toán Online (ATM nội địa)</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Hình Thức Chuyển Khoản -->
+                <div class="divChiTietThanhToanChuyenKhoan" style="display: none;">
+                    <div id="pnThongTinChuyenKhoanTSC" rel="pn" style="display: block;">
+                        <div>
+                            <legend>Thông tin chuyển khoản</legend>
+                            <div class="title">
+                                1) Ngân hàng VietComBank chi nhánh Sài Gòn:</div>
+                            <div>
+                                Chủ tài khoản: Huỳnh Anh Tú</div>
+                            <div>
+                                Số tài khoản: 007 100 5645 101</div>
+                                <div class="title">
+                                2) Ngân hàng ACB:</div>
+                            <div>
+                                Chủ tài khoản: Huỳnh Anh Tú</div>
+                            <div>
+                                Số tài khoản: 2422 5109</div>
+                        </div>
+                        <div style="background-color:Azure;">
+                        <legend style="color:Red; font-weight:bold;">Lưu ý:</legend>
+                        - Khi chuyển khoản trong phần nội dung Quý Khách vui lòng ghi <font color="#FF0000"><b>Mã đơn hàng</b></font>, hoặc <font color="#FF0000"><b>email</b></font> đặt hàng.<br>
+                        - Quý Khách có thể thông báo Mã Đơn Hàng và số tiền đã chuyển vào số Tổng đài:  (028) 7106 0707 - (028) 7306 0707
+                        </div>                    
+                    </div>
+                </div>
+                <!-- Hình Thức Thanh Toán ATM -->
+                <div class="divChiTietThanhToanATM" style="display: none;">
+                    <div id="pnThongTinATM">
+                        <div> 
+                            <legend>Alona chấp nhận thanh toán thẻ ATM nội địa của những ngân hàng</legend>
+                            Vietcombank, DongAbank, Vietinbank, Teckcombank, Tienphongbank, VIB, HDbank, EximBank, SHB
+                        </div>
+                    </div>
+                </div>
+            </div>
+    		<input type="button" name="previous" class="previous action-button" value="Previous" />
+    		<input type="button" name="next" class="next action-button" value="Next" />
+    	</fieldset>
+        <!-- fieldsets -->
+    	<fieldset>
+    		<h2 class="fs-title">Thông tin xuất hóa đơn</h2>
+    		<div id="frmXuatVAT" title="Thông tin xuất hóa đơn" style="margin: 0px auto; text-align: center; min-height: 150px; display: block;">
+                <div style="background-color: red;  padding: 10px 10px; margin-bottom: 10px;  text-align: center;  font-weight: bold; color: white;">Chú ý: Quý Khách vui lòng cung cấp chính xác thông tin xuất VAT để Song Tạo kịp xuất khi nhận hàng</div>
+                <div class="divOptNoiNhan" style="width: 50%;float:left;">
+                    <input id="Radio2" type="radio" name="VAT" value="2" checked="checked">
+                    <label for="Radio2">Thông tin Xuất VAT</label>
+                </div>
+                <div class="divOptNoiNhan">
+                    <input id="Radio1" type="radio" name="VAT" value="1">
+                    <label for="Radio1">Gửi thông tin sau</label>
+                </div>
+                <div class="divThongTinXuatVAT" style="background-color: #B1DCEC; margin-top: 10px; padding: 5px;">
+                    <label class="title">Công ty:</label><input id="XHD_txtCongTy" type="text"><br>
+                    <label class="title">Địa chỉ:</label><input id="XHD_txtDiaChi" type="text"><br>
+                    <label class="title">Mã số thuế:</label><input id="XHD_txtMaSoThue" type="text"><br><div style="clear:left"></div>
+                </div>
+            </div>
+            <input type="button" name="previous" class="previous action-button" value="Previous" />
+    		<input type="button" name="next" class="next action-button" value="Next" />
+    	</fieldset>
+        <!-- fieldsets -->
+    	<fieldset>
+    		<h2 class="fs-title">Hoàn Tất Đơn Hàng</h2>
+            <div id="divHoanTat" style="max-height: 400px; overflow-y: scroll; display: block;" title="Vui lòng xem thông tin bên dưới và nhấn nút hoàn tất để đặt hàng">
+               <div class="divThongTinDonHang">
+                  <div>
+                     <legend>Thông tin đặt hàng</legend>
+                     <div class="col col-sm-5">Mã đơn hàng:</div>
+                     <div class="col col-sm-7">W7-080317-191</div>
+                     <div class="col col-sm-5">Ngày đặt hàng: </div>
+                     <div class="col col-sm-7">03/08/2017</div>
+                     <div class="col col-sm-5">Thanh toán:</div>
+                     <div class="col col-sm-7">Tiền mặt</div>
+                  </div>
+               </div>
+               <div class="divThongTinKhachHang">
+                  <div>
+                     <legend>Thông tin người đặt hàng</legend>
+                     <div class="col col-sm-5">Tên khách hàng:</div>
+                     <div class="col col-sm-7">Park</div>
+                     <div class="col col-sm-5">Di động:</div>
+                     <div class="col col-sm-7">0992211345</div>
+                     <div class="col col-sm-5">Email:</div>
+                     <div class="col col-sm-7">chuphinhdepgiare@gmail.com</div>
+                  </div>
+               </div>
+               <div style="clear:left;"></div>
+               <div class="lstChiTietDonHang">
+                  <table>
+                     <tbody>
+                        <tr class="rowhead">
+                           <td>STT</td>
+                           <td>Sản phẩm</td>
+                           <td>Số File</td>
+                           <td>Đơn giá</td>
+                           <td>Số lượng</td>
+                           <td>ĐVT</td>
+                           <td>Khuyến mãi</td>
+                           <td>Thành tiền</td>
+                        </tr>
+                        <tr>
+                           <td>1</td>
+                           <td class="colContent">
+                              <div class="divSanPham">Phiếu bảo hành</div>
+                              - Kích thước: 41 x 10 cm<br>- Loại in: In nhiều màu<br>- Số mặt: 1 mặt<br>- Chất liệu: Giấy Fort 100 gsm<br>- Cấn xếp: Cấn 1 đường<br>- Đóng số nhảy: Không<br>- Chạy răng cưa: Không<br>- Thời gian: 3 ngày<br>
+                           </td>
+                           <td>1</td>
+                           <td>2.000</td>
+                           <td>100</td>
+                           <td>Tờ</td>
+                           <td>20.000</td>
+                           <td>200.000</td>
+                        </tr>
+                        <tr>
+                           <td colspan="7" class="colSumTitle">Tổng cộng</td>
+                           <td class="colSumContent">200.000</td>
+                        </tr>
+                        <tr>
+                           <td colspan="7" class="colKhuyenMaiTitle">Khuyến mãi</td>
+                           <td class="colKhuyenMaiContent">20.000</td>
+                        </tr>
+                        <tr>
+                           <td colspan="7" class="colConLaiTitle">Thành tiền</td>
+                           <td class="colConLaiContent">180.000</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class="divThongTinChuy">
+                  <div>
+                     <legend>Chú ý: Thông tin trên</legend>
+                     - Chưa bao gồm thuế VAT <br>- Chưa cộng đơn giá (nếu chưa có giá)<br>- Chưa bao gồm phí vận chuyển (nếu có)<br>- <font color="#FF0000">Vì in ghép nhiều sản phẩm để giảm giá thành, nên chúng tôi không thể đảm bảo tuyệt đối màu sắc cũng như sự đồng nhất màu.</font><br>
+                  </div>
+                  <div style="clear:left;"></div>
+               </div>
+               <div class="divChiTietNoiNhanHang">
+                  <div>
+                     <div>
+                        <legend>Thông tin người nhận hàng</legend>
+                        <div class="titleText">Tên người nhận:</div>
+                        <div>dsad</div>
+                        <div class="titleText">Địa chỉ:</div>
+                        <div>321321, Phường 03, Quận 10, TP.HCM</div>
+                        <div class="titleText">Số điện thoại:</div>
+                        <div>31232</div>
+                     </div>
+                  </div>
+               </div>
+        </div>
+		<input type="button" name="previous" class="previous action-button" value="Previous" />
+		<input type="submit" name="submit" class="submit action-button" value="Submit" />
+    	</fieldset>
+    </form>
+</div>
+<!-- jQuery -->
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<!-- jQuery easing plugin -->
+<script src="js/jquery.easing.min.js" type="text/javascript"></script>
+<!-- Function -->
+<script type="text/javascript" src="js/function.js"></script>
