@@ -313,7 +313,7 @@ function bbp_get_template_stack() {
 
 	// Sort
 	if ( ! isset( $merged_filters[ $tag ] ) ) {
-		ksort( $wp_filter[$tag] );
+		@ksort( $wp_filter[$tag] );
 		$merged_filters[ $tag ] = true;
 	}
 
