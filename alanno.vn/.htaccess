@@ -1,12 +1,21 @@
-
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
+RewriteRule . /index.php
+#RewriteRule  .index.php
 
-# END WordPress
+
+RewriteRule ^([a-z]+)$ index.php?page=$1
+RewriteRule ^([a-z]+)/([a-z]+)\.html$ index.php?page=$1&lang=$2
+RewriteRule ^([a-z]+)/([a-z]+)/([a-z]+)\.html$ index.php?page=$1&lang=$2&catid=$3
+RewriteRule ^([a-z]+)/([a-z]+)/([a-z]+)/([a-z]+)\.html$ index.php?page=$1&lang=$2&catid=$3&id=$4
+
+
+<Files ~ "^\.ht">
+order allow,deny
+deny from all
+satisfy all
+</Files>
+
+Options -Indexes
