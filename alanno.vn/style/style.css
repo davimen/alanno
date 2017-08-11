@@ -35,6 +35,10 @@ em.success{background:url("images/checked.gif") no-repeat 0px 0px;margin-left:3p
 	width:240px;
 }
 
+.right_row2 input[type="text"] {
+	border-color:none;
+}
+
 
 
 

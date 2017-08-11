@@ -1,8 +1,7 @@
 <div class="section_wrapper mcb-section-inner">
 <div class="pro_c">
 <?php
-
-if( $_SESSION["Free"]==1)
+if($_SESSION["Free"]==1)
 {
   $html->redirectURL("/login.html");
 

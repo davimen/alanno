@@ -13,16 +13,15 @@ if($_SESSION["Free"]==0 && !$isEdit)
 	$html->redirectURL("account.html");
 }
 ?>
-<div class="sitepath"><?php include("modum/sitePath.php");?></div>
-
-<div class="right">
+<div class="section_wrapper mcb-section-inner">
+<div class="pro_c">
 <?php
 if($_SESSION["Free"]==0)
 {
         $rstgetInfo=$dbf->getDynamic("member","status=1 and id='".$_SESSION["member_id"]."'","");
         $rowgetInfo=$dbf->nextObject($rstgetInfo);
 
-        $email=$rowgetInfo->email;
+        $email= $rowgetInfo->email;
         $password="";
     	$firstname  = stripslashes($rowgetInfo->firstname);
         $lastname   = stripslashes($rowgetInfo->lastname);
@@ -84,10 +83,7 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
                   "postcode"=>$postcode,"status"=>1,"datecreated"=>$time,"dateupdated"=>$time);
                   //print_r($array_col);
                   $affect=$dbf->insertTable("member",$array_col);
-
                 }
-
-
 
             }else
             {
@@ -154,7 +150,7 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
                               </body></html>";
 
                                 $Subject  =  "A confirmation email members";
-                                require("modum/class.phpmailer.php");
+                                require("/modum/class.phpmailer.php");
                                 $mail = new PHPMailer();
                                 $SMTP_Host = $arraySMTPSERVER["host"];
                                 $SMTP_Port = 25;
@@ -213,29 +209,25 @@ if(isset($URL[1]))
 	}
 }
 
-
-
-require '/captcharand.php';
+require 'captcharand.php';
 $_SESSION['captcha_id'] = strtoupper($strcaptcha);
 ?>
 
-<?php echo $html->normalForm("frm",array("action"=>"","method"=>"post"));?>
-<div class='title_header'><?php echo $words["REGISTER"]?></div>
-<div class="pro_c">
-<div  style="text-align:left;padding-left:15px"><span class="saodo"><?=$msg?></span></div>
 
-<fieldset style="border: 0">
-    <legend><b><?php echo $words["INFOLOGIN"]?></b></legend>
+<form id="frm" name="frm" method="post" action="" enctype="application/x-www-form-urlencoded">
+<div class="pro_c">
+<div  style="text-align:left;padding-left:15px"><span class="saodo"><?php echo $msg;?></span></div>
+
+<fieldset style="border:0px">
+    <legend><b><?php echo $words["INFOLOGIN"];?></b></legend>
 
 <div class="saodo"><h3 style="padding-left:10px;color:#c00;font-size:12px;margin:0px"><?php echo $msg2?></h3></div>
-<?php
-    //echo "<div class='title'>Đăng ký thành viên</div>";
-?>
+
 <div class="clear" style="padding-top:10px"></div>
 <div class="clear"></div>
 <div class="right_row1">E-mail</div>
 <div class="right_row2">
-  <input class="full" <?php echo (($isEdit)?"readonly":"")?> type="text" maxlength="50" style="width:200px" onfocus="this.select();" value="<?php echo $email?>" name="email" id="email"  /><span class="txtdo">*</span>
+  <input class="full" <?php echo (($isEdit)?"readonly":"")?> type="text" maxlength="50"  onfocus="this.select();" value="<?php echo $email?>" name="email" id="email"  /><span class="txtdo">*</span>
 </div>
 
 <?php
@@ -244,9 +236,9 @@ if(!$isEdit)
 ?>
 <!--password-->
 <div class="clear"></div>
-<div class="right_row1"><?php echo $words["PASSWORD"]?></div>
+<div class="right_row1"><?php echo $words["PASSWORD"];?></div>
 <div class="right_row2">
-  <input class="full" type="password" maxlength="50" style="width:200px" onfocus="this.select();" value="<?php echo $temp_pwd?>"   name="password" id="password"  /><span class="txtdo">*</span>
+  <input class="full" type="password" maxlength="50"  onfocus="this.select();" value="<?php echo $temp_pwd;?>"   name="password" id="password"  /><span class="txtdo">*</span>
 </div>
 <div class="clear"></div>
 <?php
@@ -256,77 +248,73 @@ if(!$isEdit)
 
 </fieldset>
 <div class="clear" style="padding-top:10px"></div>
-<fieldset style="border: 0">
+<fieldset style="border:0px;">
 <legend>
-   <b><?php echo $words["CONTACTINFORMATION"]?></b>
+   <b><?php echo $words["CONTACTINFORMATION"];?></b>
 </legend>
 <div class="clear" style="padding-top:10px"></div>
-<div class="right_row1"><?php echo $words["FIRSTNAME"]?></div>
+<div class="right_row1"><?php echo $words["FIRSTNAME"];?></div>
 <div class="right_row2">
-  <input class="full" maxlength="200" style="width:200px" type="text" onfocus="this.select();" value="<?php echo $firstname?>" name="firstname" id="firstname"  /><span class="txtdo">*</span>
+  <input class="full" maxlength="200"  type="text" onfocus="this.select();" value="<?php echo $firstname;?>" name="firstname" id="firstname"  /><span class="txtdo">*</span>
 </div>
 <div class="clear"></div>
-<div class="right_row1"><?php echo $words["LASTNAME"]?></div>
+<div class="right_row1"><?php echo $words["LASTNAME"];?></div>
 <div class="right_row2">
-  <input class="full" maxlength="200" style="width:200px" type="text" onfocus="this.select();" value="<?php echo $lastname?>" name="lastname" id="lastname"  /><span class="txtdo">*</span>
+  <input class="full" maxlength="200"  type="text" onfocus="this.select();" value="<?php echo $lastname;?>" name="lastname" id="lastname"  /><span class="txtdo">*</span>
 </div>
 
 <div class="clear"></div>
 <div class="right_row1">Địa chỉ</div>
 <div class="right_row2">
-  <input class="full" maxlength="200" style="width:200px" type="text" onfocus="this.select();" value="<?php echo $address?>" name="address" id="address"  /><span class="txtdo">*</span>
+  <input class="full" maxlength="200"  type="text" onfocus="this.select();" value="<?php echo $address;?>" name="address" id="address"  /><span class="txtdo">*</span>
 </div>
 
-
-
 <div class="clear"></div>
-<div class="right_row1"><?php echo $words["PHONE"]?></div>
+<div class="right_row1"><?php echo $words["PHONE"];?></div>
 <div class="right_row2">
-  <input class="full" style="width:200px" type="text" onfocus="this.select();" value="<?php echo $phone?>" name="phone" id="phone"  />
+  <input class="full"  type="text" onfocus="this.select();" value="<?php echo $phone;?>" name="phone" id="phone"  />
   <span class="txtdo">*</span>
 </div>
 
 <div class="clear"></div>
 <div class="right_row1">FAX</div>
 <div class="right_row2">
-  <input class="full" style="width:200px" type="text" onfocus="this.select();" value="<?php echo $fax?>" name="fax" id="fax"  />
+  <input class="full"  type="text" onfocus="this.select();" value="<?php echo $fax;?>" name="fax" id="fax"  />
 </div>
 
 <div class="clear"></div>
 <div class="right_row1">Quận/tỉnh</div>
 <div class="right_row2">
-  <?php
-     /*
-     $rststate=$dbf->getDynamic("shipping_method","status=1","title asc");
-      echo'<select name="state" id="state" size="0" class="" style="width:205px !important">
+  <?php    
+      $rststate=$dbf->getDynamic("shipping_method","status=1","title asc");
+      echo'<select name="state" id="state" size="0" class="">
            <option value="">- Chọn quận/tỉnh -</option>';
       while($row = $dbf->nextData($rststate))
        {
           echo'<option '.(($state==$row['id'])?"selected":"").' value="'.$row['id'].'">'.$row['title'].'</option>';
        }
-         // echo'<option '.(($state=='other')?"selected":"").' value="other">Khác</option>';
+          echo'<option '.(($state=='other')?"selected":"").' value="other">Khác</option>';
 
-      echo'</select>';
-	  */
+      echo'</select>';	  
 
   ?>
   <span class="txtdo">*</span>
 </div>
 
 <div class="clear"></div>
-<div class="right_row1"><?php echo $words["POSTCODE"]?></div>
+<div class="right_row1"><?php echo $words["POSTCODE"];?></div>
 <div class="right_row2">
-  <input class="full" style="width:200px" type="text" onfocus="this.select();" value="<?php echo $postcode?>" name="postcode" id="postcode"  />
+  <input class="full"  type="text" onfocus="this.select();" value="<?php echo $postcode;?>" name="postcode" id="postcode"  />
   <span class="txtdo">*</span>
 </div>
 
 <div class="clear"></div>
-<div class="right_row1"><?php echo $words["COUNTRY"]?></div>
+<div class="right_row1"><?php echo $words["COUNTRY"];?></div>
 <div class="right_row2">
 <?php
-      /*
+     
       $rstCountry=$dbf->getDynamic("countries","status=1","countries_name asc");
-      echo'<select name="country_id" id="country_id" size="0" class="" style="width:205px !important">
+      echo'<select name="country_id" id="country_id" size="0" class="">
            <option value="">- Chọn đất nước -</option>';
       while($row = $dbf->nextData($rstCountry))
        {
@@ -338,31 +326,27 @@ if(!$isEdit)
           echo'<option '.(($row['id']==230)?"selected":"").' value="'.$row['id'].'">'.$row['countries_name'].'</option>';
           }
        }
-
       echo'</select>';
-	  */
+	 
 ?>
      <span class="txtdo">*</span>
 </div>
-
 </fieldset>
-<div class="clear" style="padding-top:10px"></div>
 <fieldset style="border: 0">
-<legend><b><?php echo $words["INFOSECURITYCODE"]?></b></legend>
+<legend></legend>
 
 <?php
     echo "<div class='title'></div>";
 ?>
-<div class="clear" style="padding-top:10px"></div>
-<div class="right_row1"><?php echo $words["SECURITYCODE"]?></div>
-<div class="right_row2">
-     <div id="captchaimage"><a href="javascript:void(0);" id="refreshimg" title="Click to refresh image">
-     <img src="captchaimages/image.php?<?php echo time()?>" border="0" width="140" height="50" alt="Captcha image" /></a></div>
+
+<div class="right_row1"><?php echo $words["SECURITYCODE"];?></div>
+<div class="right_row2">     
+	 <?php echo $_SESSION['captcha_id'];?><br/>
      <input type="text" maxlength="10" name="captcha" id="captcha" onfocus="this.select()" class="inputCode" />
 </div>
 
 </fieldset>
-<div class="clear" style="padding-top:10px"></div>
+
 <div class="clear"></div>
 
 <fieldset style="border: 0">
@@ -372,37 +356,30 @@ if(!$isEdit)
 if($isEdit)
 {
 ?>
-<input type="submit"  value="<?php echo $words["UPDATE"]?>" name="ok" id="ok" />
-<input type="button"  onclick="window.location='/account.html';" value="<?php echo $words["CANCAL"]?>" name="retype" id="retype" />
+<input type="submit"  value="<?php echo $words["UPDATE"];?>" name="ok" id="ok" />
+<input type="button"  onclick="window.location='/account.html';" value="<?php echo $words["CANCAL"];?>" name="retype" id="retype" />
 
 <?php
-}else{
+}
+else
+{
 ?>
 <input type="submit"  value="<?php echo $words["REGISTER"];?>" name="ok" id="ok"  />
 <input type="reset" value="<?php echo $words["RESET"];?>" name="retype" id="retype" />
-<?
+<?php
 }
 ?>
 </div>
 </fieldset>
-<div class="clear" style="padding-top:8px"></div>
 </div>
-<div class='box_bottom_main'></div>
-<!--check form-->
 
-<?php
-  echo $html->closeForm();
-?>
+<!--check form-->
+</form>
+
+
 <script type="text/javascript">
-$(function(){
-	$("#refreshimg").click(function(){
-		$.post('captchanewsession.php');
-		$("#captchaimage").load('captchaimage_req.php');
-		return false;
-	});
-});
-$().ready(function() {
-$("#frm").validate({
+jQuery().ready(function() {
+jQuery("#frm").validate({
             debug: false,
             errorElement: "em",
             success: function(label) {
@@ -468,7 +445,7 @@ $("#frm").validate({
               captcha:
               {
                 required: true,
-                remote: "captchaprocess.php"
+                remote: "/captchaprocess.php"
               }
     		},
             messages:
@@ -540,8 +517,6 @@ $("#frm").validate({
 
 	});
 });
-
 </script>
-
 </div>
-<div class="clear"></div>
+</div>

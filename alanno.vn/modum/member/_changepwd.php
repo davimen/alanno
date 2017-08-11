@@ -1,8 +1,5 @@
-<div class="sitepath"><?php include("modum/sitePath.php");?></div>
-<div class="left">
-    <?php include("modum/left.php");?>
-</div>
-<div class="right">
+<div class="section_wrapper mcb-section-inner">
+<div class="pro_c">
 <?php
 if($_SESSION["Free"]==1)
 {
@@ -46,10 +43,8 @@ $_SESSION['captcha_id'] = strtoupper($strcaptcha);
 ?>
 <?php
  echo $html->normalForm("frmchange",array("class"=>"","action"=>"","method"=>"post"));
-?>
-   <div class='title_header'><?=$words["CHANGEPASSWORD"]?></div>
-   <div class="pro_c">
-   
+?>  
+   <div class="pro_c">   
     <?php
         if($URL[1]=='success')
         {
@@ -83,16 +78,12 @@ $_SESSION['captcha_id'] = strtoupper($strcaptcha);
     </div>
     <div class="clear"></div>
 
-	<div class="clear" style="padding-top:7px;"></div>
-     <div class="title">
-      <b><?=$words["INFOSECURITYCODE"]?></b>
-     </div>
+	<div class="clear" style="padding-top:7px;"></div>    
     <div class="productall1">
 	<div class="clear" style="padding-top:5px;"></div>
 	<div class="right_row1"><?=$words["SECURITYCODE"]?></div>
 	<div class="right_row2">
-        <div id="captchaimage"><a href="javascript:void(0);" id="refreshimg" title="Click to refresh image">
-        <img src="captchaimages/image.php?<?php echo time()?>" border="0" width="140" height="50" alt="Captcha image" /></a></div>
+        <div id="captchaimage"><?php echo $_SESSION['captcha_id'];?></div>
         <input type="text" maxlength="10" name="captcha" id="captcha" onfocus="this.select()" class="inputCode" /><span class="saodo">*</span>
 	</div>
 
@@ -112,19 +103,12 @@ $_SESSION['captcha_id'] = strtoupper($strcaptcha);
 
 <script language="javascript">
 
-$("#butback").click( function(){
+jQuery("#butback").click( function(){
   window.location.href='/account.html';
 });
 
-$(function(){
-	$("#refreshimg").click(function(){
-		$.post('captchanewsession.php');
-		$("#captchaimage").load('captchaimage_req.php');
-		return false;
-	});
-});
-$().ready(function() {
-$("#frmchange").validate({
+jQuery().ready(function() {
+jQuery("#frmchange").validate({
             debug: false,
             errorElement: "em",
             success: function(label) {
@@ -194,5 +178,5 @@ $("#frmchange").validate({
 </script>
 
 </div>
-<div class="clear"></div>
+
 
