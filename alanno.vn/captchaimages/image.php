@@ -2,6 +2,7 @@
 
 // Begin the session
 session_start();
+error_reporting(0);
 
 // If the session is not present, set the variable to an error message
 if(!isset($_SESSION['captcha_id']))

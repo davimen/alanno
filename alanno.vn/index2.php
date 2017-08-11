@@ -117,7 +117,7 @@ function addcart(productid,quantity,price)
                 var data = xmlRequest.responseText;
                 document.getElementById("content_msg").style.display='none';
                 document.getElementById("itemcart").innerHTML=data;
-                $(".viewcart").fancybox(
+                jQuery(".viewcart").fancybox(
                     {
                       'titleShow'		: false,
                       'width'				: 600,
@@ -141,8 +141,8 @@ function addcart(productid,quantity,price)
 
 	}
 
-    $(document).ready(function() {
-        $(".viewcart").fancybox({
+    jQuery(document).ready(function() {
+        jQuery(".viewcart").fancybox({
         'titleShow'		: false,
         'width'				: 600,
         'height'			: 500,

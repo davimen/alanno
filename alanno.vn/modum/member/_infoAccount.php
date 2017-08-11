@@ -1,4 +1,5 @@
-<div class="sitepath"><?php include("modum/sitePath.php");?></div>
+<div class="section_wrapper mcb-section-inner">
+<div class="pro_c">
 <?php
 
 if( $_SESSION["Free"]==1)
@@ -36,9 +37,7 @@ if( $_SESSION["Free"]==1)
 ?>
 <form action="/register/<?php echo md5("edit".date("dmYH"))?>" method="post" class="jNice" name="frminfo" id="frminfo">
 
-<div class='title_header'>Thông tin tài khoản</div>
 <div class="pro_c">
-
 <div class="contentMain_info">
 
 <div class="right_row1">Email</div>
@@ -121,4 +120,4 @@ if( $_SESSION["Free"]==1)
 <?php
 }
 ?>
-<div class="clear"></div>
+</div>

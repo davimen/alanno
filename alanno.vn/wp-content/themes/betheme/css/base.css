@@ -611,3 +611,44 @@ table tr:first-child td {background: none !important;}
 	.home #trangchu5  {    background-position: right top !important;}
 	.home .column_attr button {margin-left: 0px !important;}
 }
+
+.clearfix {
+    zoom: 1;
+}
+
+#Header .header-top{
+	border-bottom: 1px solid #cfcfcf;
+	background:#fff;
+
+}
+
+.rightBox {
+    float: right;
+}
+
+.header-right li{
+	border-left: 1px solid #cfcfcf;
+	float: left;
+	height: 55px;
+	line-height: 65px;
+	text-align: center;
+	width: 54px;
+}
+.header-right li:last-child{
+	border-left: none;
+	background-color: #000;
+	width: 184px;
+}
+.header-right li a{display: block;}
+
+#Header .header-top h1.leftBox{
+	font-size: 11px;
+	color: #8e8e8e;
+	padding-top: 14px;
+	float:left;	
+}
+#Header .navi li{
+	float: left;
+	margin: 0 35px;
+}
+#navi-top{position: relative;padding: 50px 30px 35px 22px;}

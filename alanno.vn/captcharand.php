@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 // Create a random string, leaving out 'o' to avoid confusion with '0'
 $char = strtoupper(substr(str_shuffle('abcdefghjkmnpqrstuvwxyz'), 0, 4));
 

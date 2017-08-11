@@ -65,7 +65,7 @@ if($_SESSION["Free"]==0)
             </div>
             <div style="border-bottom:2px dotted #1a8aca;height:15px"></div>
             <div style="text-align:left;padding-top:15px"></div>
-            <div style="text-align:left;padding-top:5px">Bạn chưa có tài khoản <a class="itempathhome" href="register.html">Đăng ký</a> thành viên miễn phí</div>
+            <div style="text-align:left;padding-top:5px">Bạn chưa có tài khoản <u><a class="itempathhome" href="register.html"><b>Đăng ký</b></a></u> thành viên miễn phí</div>
 
       </div>
       </form>      

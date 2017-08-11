@@ -1,8 +1,5 @@
-<div class="sitepath"><?php include("modum/sitePath.php");?></div>
-<div class="left">
-    <?php include("modum/left.php");?>
-</div>
-<div class="right">
+<div class="section_wrapper mcb-section-inner">
+<div class="pro_c">
 <?php
 if($_SESSION["Free"]==0)
 {
@@ -39,7 +36,7 @@ if($code!=$_SESSION["captcha_id"])
                   *****************************/
 
 
-                  $subject="Cung cấp lại mật khẩu thành viên của website designercollection4you.com";
+                  $subject="Cung cấp lại mật khẩu thành viên của website Alona.vn";
                   $body='Email:'.$email.'<br/>';
                   $body.='Password:'.$password.'<br/>';
 
@@ -61,8 +58,7 @@ if($code!=$_SESSION["captcha_id"])
                   $mail->From     = $from;
                   $mail->FromName = $fromName;
                   $mail->AddAddress($to);
-                  $mail->AddReplyTo($from, $fromName);
-                  $mail->AddCC("thuy.tq@angiang24h.com","Quên mật khẩu");
+                  $mail->AddReplyTo($from, $fromName);                  
 
                   $mail->WordWrap = 50;
                   $mail->IsHTML(true);
@@ -101,8 +97,7 @@ if(in_array($URL[1],array("success","error","email-error")))
 }
 
     ?>
-
-    <div class='title_header'><?=$words["FORGETPASSWORD"]?></div>
+    
     <div class="pro_c">
     <div  style="text-align:left;padding-left:15px"><span class="saodo"><?=$msg?></span></div>
     <div id="clear"></div>
@@ -115,16 +110,15 @@ if(in_array($URL[1],array("success","error","email-error")))
     <div class="clear"></div>
     </div>
 
-	<div class="clear" style="padding-top:7px;"></div>
-
-	<div class='title'><b><?=$words["INFOSECURITYCODE"]?></b></div>
+	<div class="clear" style="padding-top:7px;"></div>	
 
     <div class="productall1">
 	<div class="clear" style="padding-top:5px;"></div>
 	<div class="right_row1"><?=$words["SECURITYCODE"]?></div>
 	<div class="right_row2">
-        <div id="captchaimage"><a href="javascript:void(0);" id="refreshimg" title="Click to refresh image">
-        <img src="captchaimages/image.php?<?php echo time()?>" border="0" width="132" height="46" alt="Captcha image" /></a></div>
+        <div id="captchaimage">
+		  <?php echo $_SESSION['captcha_id'];?>
+        </div>
         <input type="text" maxlength="10" name="captcha" id="captcha" onfocus="this.select()" class="inputCode" /><span class="saodo">*</span>
 	</div>
 	<div class="clear"></div>
@@ -142,15 +136,15 @@ echo $html->closeForm();
 ?>
 
 <script language="javascript">
-$(function(){
-	$("#refreshimg").click(function(){
-		$.post('captchanewsession.php');
-		$("#captchaimage").load('captchaimage_req.php');
+jQuery(function(){
+	jQuery("#refreshimg").click(function(){
+		jQuery.post('captchanewsession.php');
+		jQuery("#captchaimage").load('captchaimage_req.php');
 		return false;
 	});
 });
-$().ready(function() {
-$("#frmForget").validate({
+jQuery().ready(function() {
+jQuery("#frmForget").validate({
             debug: false,
             errorElement: "em",
             success: function(label) {
