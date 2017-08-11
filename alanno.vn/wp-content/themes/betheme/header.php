@@ -41,6 +41,12 @@
 
 <!-- wp_head() -->
 <?php wp_head(); ?>
+<link rel="stylesheet"  type="text/css" href="<?php echo home_url(); ?>/js/fancybox/jquery.fancybox-1.3.1.css"/>
+<script type="text/javascript" src="<?php echo home_url(); ?>/js/jquery.validate.pack.js"></script>
+<script type="text/javascript" src="<?php echo home_url(); ?>/js/jquery.form.js"></script>
+<script type="text/javascript" src="<?php echo home_url(); ?>/js/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="<?php echo home_url(); ?>/js/openBox.js"></script>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -116,7 +122,7 @@
 							<ul class="header-right rightBox clearfix">
 								<li><a href="<?php echo home_url(); ?>/account.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_user.png" alt="user"></a></li>
 								<li><a href="<?php echo home_url(); ?>/login.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_lock.png" alt="lock"></a></li>
-								<li><a href="<?php echo home_url(); ?>" class="hover viewcart"><img src="<?php echo home_url(); ?>/style/images/icon_cart.png" alt="cart"></a></li>
+								<li><a href="<?php echo home_url(); ?>/modum/shopingcart/viewcart.php" class="hover viewcart"><img src="<?php echo home_url(); ?>/style/images/icon_cart.png" alt="cart"></a></li>
 							</ul>
 						</div>
 					</div>	
