@@ -6,7 +6,7 @@
  * @author Muffin group
  * @link http://muffingroup.com
  */
-
+session_start();
 
 define( 'THEME_DIR', get_template_directory() );
 define( 'THEME_URI', get_template_directory_uri() );

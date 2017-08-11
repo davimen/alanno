@@ -41,13 +41,12 @@ function getwords($lang, $arrayLang) {
    }
 
  function signout() {
-
       $_SESSION["member_id"]          = "";
       $_SESSION["member_email"]       = "";
       $_SESSION["member_firstname"]   = "";
-      $_SESSION["member_lastname"]    = "";
-      $_SESSION["Free"]=1;
-      echo "<script type='text/javascript'>window.location='trang-chu.html';</script>";
+      $_SESSION["member_lastname"]    = "";	 
+      $_SESSION["Free"]=1;	  
+      echo "<script type='text/javascript'>window.location='/';</script>";
   }
   /********************************************************************/
   function Button($idName, $arrayOption) {

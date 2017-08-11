@@ -106,8 +106,17 @@
 						<div class="wrap-inner clearfix">
 							<h1 class="leftBox">CÔNG TY TNHH THIẾT KẾ THƯƠNG HIỆU VÀ IN ẤN ALONA</h1>
 							<ul class="header-right rightBox clearfix">
-								<li><a href="<?php echo home_url(); ?>/account.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_user.png" alt="user"></a></li>
-								<li><a href="<?php echo home_url(); ?>/login.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_lock.png" alt="lock"></a></li>
+								<li><a href="<?php echo home_url(); ?>/account.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_user.png" alt="user"></a></li>								
+								<?php
+								  if($_SESSION["Free"]==1)
+								  {
+								  ?>
+								  <li><a href="<?php echo home_url(); ?>/login.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_lock.png" alt="lock"></a></li>
+								  <?php }else {?>
+								  <li><a href="<?php echo home_url(); ?>/logout.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_unlock.png" alt="lock"></a></li>
+								  <?php 
+								  }
+								  ?>
 								<li><a href="<?php echo home_url(); ?>/modum/shopingcart/viewcart.php" class="hover viewcart"><img src="<?php echo home_url(); ?>/style/images/icon_cart.png" alt="cart"></a></li>
 							</ul>
 						</div>

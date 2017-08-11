@@ -29,7 +29,7 @@ array_shift($URL);
 $page_url=strtolower($URL[0]);
 
 switch ($page_url) {
-  case "signout":	
+  case "logout":    
   case "checkout":            
   case "checkout-complete":
   case "login":

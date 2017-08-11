@@ -19,14 +19,13 @@ $css=SINGLETON_MODEL::getInstance("CSS");
 $js=SINGLETON_MODEL::getInstance("JAVASCRIPT");
 $utl=SINGLETON_MODEL::getInstance("UTILITIES");
 
-
 $words = $dbf->getwords('vn', $arrayLang); 
 if(empty($_SESSION["login"])){
     $_SESSION["login"]=session_id();
     $_SESSION["Free"]=1;	
 }
 
-if($URL[0]==md5("signout".date("dmH")))
+if($URL[0]=='logout')
     $dbf->signout();
 ?>
 
