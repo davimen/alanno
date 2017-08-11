@@ -94,6 +94,21 @@
 	
 			<!-- #Header -->
 			<header id="Header">
+			    
+				<div class="header-top">
+				    <div class="container">
+						<div class="wrap-inner clearfix">
+							<h1 class="leftBox">CÔNG TY TNHH THIẾT KẾ THƯƠNG HIỆU VÀ IN ẤN ALONA</h1>
+							<ul class="header-right rightBox clearfix">
+								<li><a href="<?php echo home_url(); ?>/account.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_user.png" alt="user"></a></li>
+								<li><a href="<?php echo home_url(); ?>/login.html" class="hover"><img src="<?php echo home_url(); ?>/style/images/icon_lock.png" alt="lock"></a></li>
+								<li><a href="<?php echo home_url(); ?>" class="hover viewcart"><img src="<?php echo home_url(); ?>/style/images/icon_cart.png" alt="cart"></a></li>
+							</ul>
+						</div>
+					</div>	
+				</div>
+				
+			
 				<?php if( mfn_header_style( true ) != 'header-creative' ) get_template_part( 'includes/header', 'top-area' ); ?>	
 				<?php 
 					if( mfn_header_style( true ) != 'header-below' ){
