@@ -652,3 +652,41 @@ table tr:first-child td {background: none !important;}
 	margin: 0 35px;
 }
 #navi-top{position: relative;padding: 50px 30px 35px 22px;}
+
+/*-----------------------------------------------------
+product item
+-------------------------------------------------------*/
+.product_info {
+	padding:  15px 10px 0px;
+	text-align: center;
+}
+.product_name {
+	font-size: 17px;
+	font-weight: bold;
+	color: #682f7e;
+	padding: 5px 0px 10px;
+}
+.product_price {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.product_number input {
+	position: relative;
+	top: 15px;
+}
+.add2cart {
+	text-align: center;
+}
+.add2cart input {
+	-ms-transition-duration: 0.5s;
+	-ms-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	　-moz-transition-duration: 0.5s;
+	-moz-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+	　transition-duration: 0.5s;
+	transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+.add2cart input:hover {
+	padding: 10px 0px;
+}

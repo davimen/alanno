@@ -111,7 +111,6 @@ if( ! $product->is_in_stock() || mfn_opts_get('shop-catalogue') || in_array( $pr
 			echo '<div class="image_frame scale-with-grid product-loop-thumb" ontouchstart="this.classList.toggle(\'hover\');">';
 			
 				echo '<div class="image_wrapper">';
-					
 				echo '<a href="'. apply_filters( 'the_permalink', get_permalink() ) .'">';
 					echo '<div class="mask"></div>';
 					
@@ -137,7 +136,14 @@ if( ! $product->is_in_stock() || mfn_opts_get('shop-catalogue') || in_array( $pr
 				}
 				
 				echo '<a href="'. apply_filters( 'the_permalink', get_permalink() ) .'"><span class="product-loading-icon added-cart"></span></a>';
-				
+				echo '<div class="product_info">
+					<p class="product_name">Tên sản phẩm</p>
+					<p class="product_price">450.000 VND</p>
+					<form action="" method="">
+						<p class="product_number">Số lượng: <input type="text" name="product_number" placeholder="1" size="10"></p>
+						<p class="add2cart"><input type="submit" value="Thêm vào giỏ hàng"/></p>
+					</form>
+				</div>';	
 			echo '</div>';
 		}
 		
