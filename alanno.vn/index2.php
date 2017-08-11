@@ -32,9 +32,8 @@ if($URL[0]==md5("signout".date("dmH")))
     $dbf->signout();
 ?>
 
-<?php get_header(); ?>
-
 <?php
+get_header('order'); 
 
 $arrayCSS=array("style/style.css","/js/fancybox/jquery.fancybox-1.3.1.css");
 foreach($arrayCSS as $value) $css->linkCSS($value);
@@ -43,11 +42,29 @@ $arrayJS=array("js/jquery.validate.pack.js","js/jquery.form.js","js/fancybox/jqu
 foreach($arrayJS as $value) $js->linkJS($value);
 ?>
 
+<!-- #Content -->
+<div id="Content">
+	<div class="content_wrapper clearfix">
+
+		<!-- .sections_group -->
+		<div class="sections_group">
+		
+			<div class="entry-content" itemprop="mainContentOfPage">
+			  <?php 			    	
+				include("modum/bodymain.php"); 
+			  ?>  
+			</div>
+		</div>		
+		<!-- .four-columns - sidebar -->
+		<?php get_sidebar(); ?>
+	</div>
+</div>
+<div id="content_msg"></div>
+
 <script language="JavaScript" type="text/javascript">   
 
-   var foo = "bar";
+    var foo = "bar";
 	var xmlRequest = null;
-
 	function initRequest(url){
 		if (window.ActiveXObject){
 			xmlRequest = new ActiveXObject("Microsoft.XMLHTTP");
@@ -123,28 +140,6 @@ function addcart(productid,quantity,price)
 		}
 
 	}
-</script>
-
-<!-- #Content -->
-<div id="Content">
-	<div class="content_wrapper clearfix">
-
-		<!-- .sections_group -->
-		<div class="sections_group">
-		
-			<div class="entry-content" itemprop="mainContentOfPage">
-			  <?php 			    	
-				include("modum/bodymain.php"); 
-			  ?>  
-			</div>
-		</div>		
-		<!-- .four-columns - sidebar -->
-		<?php get_sidebar(); ?>
-	</div>
-</div>
-<div id="content_msg"></div>
-<script type="text/javascript">
-//<![CDATA[
 
     $(document).ready(function() {
         $(".viewcart").fancybox({
@@ -159,23 +154,17 @@ function addcart(productid,quantity,price)
         'type'				: 'iframe'
         });
         });
- //]]>
-</script>
+ 
+		function nhapso(evt,objectid){
 
-<script language="JavaScript" type="text/javascript">
-/*<![CDATA[*/
-function nhapso(evt,objectid){
-
-		var key=(!window.ActiveXObject)?evt.which:window.event.keyCode;
-		var values=document.getElementById(objectid).value;
-        //alert(key);
-       /* if((key<48 || key >57) && (key!=8 || key!=46 || key!=0)) return false;*/
-       if((key<48 || key >57) && key!=8 && key!=0) return false;
-
-
-		return true;
-}
-
+				var key=(!window.ActiveXObject)?evt.which:window.event.keyCode;
+				var values=document.getElementById(objectid).value;
+				//alert(key);
+			   /* if((key<48 || key >57) && (key!=8 || key!=46 || key!=0)) return false;*/
+			   if((key<48 || key >57) && key!=8 && key!=0) return false;
+			   return true;
+		}
 /*]]>*/
 </script>
+
 <?php get_footer();

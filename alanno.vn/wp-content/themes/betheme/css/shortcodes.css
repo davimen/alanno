@@ -227,6 +227,7 @@ hr.no_line{height:0}
 .single_icon.icon_center{text-align:center}
 
 /* Forms ----------------------------------------------------------------------------- */
+
 form,fieldset{margin-bottom:0}
 textarea{min-height:60px}
 label,legend{display:block;margin-bottom:5px;font-weight:700}
@@ -238,7 +239,7 @@ input[type="search"],
 input[type="tel"],
 input[type="text"],
 input[type="url"],
-select,textarea{padding:10px;outline:none;margin:0;width:230px;max-width:100%;display:block;margin-bottom:20px;font-size:13px;border-width:1px;border-style:solid;border-radius:0;box-sizing:border-box;-webkit-appearance:none}
+select,textarea{padding:10px;outline:none;margin:0;width:230px;max-width:100%;/*display:block*/;margin-bottom:20px;font-size:13px;border-width:1px;border-style:solid;border-radius:0;box-sizing:border-box;-webkit-appearance:none}
 
 /* Lists ----------------------------------------------------------------------------- */
 ul{list-style:none outside}

@@ -25,18 +25,13 @@
     	}
     }
 ?>
-
-<div class="sitepath"><?php include("modum/sitePath.php");?></div>
 <?php
 if($_SESSION["Free"]==0)
 {
 	$html->redirectURL("account.html");
 }
-
-include("modum/sitePath.php");
-
 ?>
-<div class='title_header'>Đăng nhập</div>
+<div class="section_wrapper mcb-section-inner">
 <div class="pro_c">
       <form name="frmLogin" id="frmLogin" action="/login.html" method="post">
       <div style="text-align:left">
@@ -45,7 +40,6 @@ include("modum/sitePath.php");
                   {
                     echo $msg;
                   }
-
             ?>
             </div>
             <div style="font-size:12px;text-align:left;width:260px;padding:5px"><span align="left" style="padding-left:0px;" id="lblError" class="saodo"></span></div>
@@ -74,10 +68,9 @@ include("modum/sitePath.php");
             <div style="text-align:left;padding-top:5px">Bạn chưa có tài khoản <a class="itempathhome" href="register.html">Đăng ký</a> thành viên miễn phí</div>
 
       </div>
-      </form>
-      <div id="clear"></div>
+      </form>      
 </div>
-<div class='box_bottom_main'></div>
+</div>
 <script language="javascript">
 jQuery().ready(function() {
 
