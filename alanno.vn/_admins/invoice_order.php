@@ -1,7 +1,6 @@
 <?php
         session_start();
-        if(empty($_SESSION["user_login"])) {
-        session_unregister("user_login");
+        if(empty($_SESSION["user_login"])) {        
 		echo "<script>window.location.href='login.php'</script>";
         exit;
     	}
@@ -24,7 +23,7 @@
         $dbf=SINGLETON_MODEL::getInstance("BUSINESSLOGIC");
     	$html->docType();
 
-        $info = $dbf->getConfig();
+        $info = $dbf->getConfig();		
 
         $order_id = $_GET["order_id"];
         //write order
@@ -36,7 +35,8 @@
 
 
         $member_shipping_address = $dbf->getInfoColumShipping("orders_shipping_address",$order_id);
-
+        
+		
 
          // kiem tra shipping
          if($member_shipping_address["state"]!='other')
@@ -54,6 +54,7 @@
 
 
         $rst = $dbf->getDynamic("orderdetail","orderid = '".$order_id."'","");
+
         $totalrow = $dbf->totalRows($rst);
 
         $array_productid=array($totalrow);
@@ -68,9 +69,10 @@
             $i=0;
         	while($rowcom=$dbf->nextdata($rst))
         	{
+				
                 $id          = $rowcom["id"];
                 $productid   = $rowcom["productid"];
-                $infoProduct = $dbf->getInfoColum("article",$productid);
+                //$infoProduct = $dbf->getInfoColum("article",$productid);
                 $price       = $rowcom["price"];
                 $quantity    = $rowcom["quantity"];
 
@@ -91,7 +93,9 @@
 
                $i++;
             }
-
+			
+			
+		
  ?>
 
 
@@ -168,11 +172,11 @@
                     }
                     if($order_info["is_tax"]==1)
                     {
-                      echo "<h3>".$utl->format($totalgrand+$price_shipping+(($totalgrand*$info["tax"])/100))."&nbsp;VNĐ</h3>";
+                      echo "<h3>".$utl->format($totalgrand+$price_shipping+(($totalgrand*$info["tax"])/100))."<sup>đ</sup></h3>";
                     }
                     else
                     {
-                      echo "<h3>".$utl->format($totalgrand+$price_shipping)."&nbsp;VNĐ</h3>";
+                      echo "<h3>".$utl->format($totalgrand+$price_shipping)."<sup>đ</sup></h3>";
                     }
                 ?>
 
@@ -212,8 +216,8 @@
                       <img onerror="$(this).hide()" src="image.php/image.jpg?image=<?=$array_infoProduct[$j]["picture_thumbnail"]?>&width=50&height=50" border="0">
                       </td>
                       <td class='title' width='10%' style='background: #fff; color: #000; height: 30px;'><?=$array_quantity[$j]?></td>
-                      <td class='title' width='12%' style='background: #fff; color: #000; height: 30px;text-align:right'><?=$utl->format($array_price[$j])?> VNĐ</td>
-                      <td class='title' width='18%' style='background: #fff; color: #000; height: 30px;text-align:right'><?=$utl->format($array_totalprice_item[$j])?> VNĐ</td>
+                      <td class='title' width='12%' style='background: #fff; color: #000; height: 30px;text-align:right'><?=$utl->format($array_price[$j])?><sup>đ</sup></td>
+                      <td class='title' width='18%' style='background: #fff; color: #000; height: 30px;text-align:right'><?=$utl->format($array_totalprice_item[$j])?><sup>đ</sup></td>
                     </tr>
 <?php
 
@@ -240,12 +244,12 @@
                echo "<h3>Nhận hàng tại trụ sở chính: xin vui lòng gọi số Hotline 0908934376 để hẹn giờ lấy hàng</h3>";
             }else
             {
-              echo "<h3>".$utl->format($price_shipping)."&nbsp;VNĐ</h3>";
+              echo "<h3>".$utl->format($price_shipping)."<sup>đ</sup></h3>";
             }
 
 
-            echo "<h3>(".(int)$info["tax"]."%) = ".$utl->format(($totalgrand*$info["tax"])/100)."&nbsp;VNĐ</h3>
-            <h2>".$utl->format($totalgrand+$price_shipping+(($totalgrand*$info["tax"])/100))." &nbsp;VNĐ</h2>
+            echo "<h3>(".(int)$info["tax"]."%) = ".$utl->format(($totalgrand*$info["tax"])/100)."<sup>đ</sup></h3>
+            <h2>".$utl->format($totalgrand+$price_shipping+(($totalgrand*$info["tax"])/100))." <sup>đ</sup></h2>
           </td>
         </tr>";
            }else
@@ -262,22 +266,22 @@
             echo"<h2>Tổng hóa đơn:</h2>
           </td>
           <td class='title' width='15%' style='background: #fff; color: #000; height: 30px; font-weight: bold; text-align:right'>
-            <h3>".$utl->format($totalgrand+$order_info["phieugiamgia"])."&nbsp;VNĐ</h3>";
+            <h3>".$utl->format($totalgrand+$order_info["phieugiamgia"])."<sup>đ</sup></h3>";
 
             if($order_info["is_payment_shipping"]==1)
             {
                echo "<h4>Nhận hàng tại trụ sở chính</h4>";
             }else
             {
-              echo "<h3>".$utl->format($price_shipping)."&nbsp;VNĐ</h3>";
+              echo "<h3>".$utl->format($price_shipping)."<sup>đ</sup></h3>";
             }
 
             if($order_info["phieugiamgia"]>0)
             {
-              echo "<h3>".$utl->format($order_info["phieugiamgia"])."&nbsp;VNĐ</h3>";
+              echo "<h3>".$utl->format($order_info["phieugiamgia"])."<sup>đ</sup></h3>";
             }
 
-            echo"<h2>".$utl->format($totalgrand+$price_shipping)." &nbsp;VNĐ</h2>
+            echo"<h2>".$utl->format($totalgrand+$price_shipping)." <sup>đ</sup></h2>
           </td>
         </tr>";
            }
@@ -286,7 +290,7 @@
 
    </table>
    <p><?=$info["payment_transfer"]?></p>
-   <h3>Quý khách có thắc mắc xin vui lòng liên hệ email <a href='mailto:hanhanghieuus@yahoo.com'> hanhanghieuus@yahoo.com</a>  hoặc số  điện thoại 0908934376</h3>
+   <h3>Quý khách có thắc mắc xin vui lòng liên hệ email <a href='mailto:in@alona.vn'> in@alona.vn</a>  hoặc số  điện thoại (08) 6681 8850</h3>
    <h3>Xin chân thành cảm ơn quý khách.</h3>
    </div>
       </body></html>

@@ -252,14 +252,14 @@ input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover{
 
 .invoice_order:link, .invoice_order:visited {
   float: left;
-  background: url(../../../../style/images/schnap/big_but_left.png) top left no-repeat;
+  background: url(../images/schnap/big_but_left.png) top left no-repeat;
   color: #fff;
   cursor: pointer;
 }
 
 .invoice_order span {
   float: left;
-  background: url(../../../../style/images/schnap/big_but_right_r1_c2.png) top right no-repeat;
+  background: url(../images/schnap/big_but_right_r1_c2.png) top right no-repeat;
   height: 19px;
   padding: 5px 0px 5px;
   color: #fff;
