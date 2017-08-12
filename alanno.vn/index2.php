@@ -47,5 +47,4 @@ get_header('order');
 		</div>
 	</div>
 </div>
-<div id="content_msg"></div>
 <?php get_footer();

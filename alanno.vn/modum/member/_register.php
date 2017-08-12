@@ -81,7 +81,7 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
                    $array_col=array("email"=>$email,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,
                   "phone"=>$phone,"fax"=>$fax,"address"=>$address,"country_id"=>$country_id,"state"=>$state,
                   "postcode"=>$postcode,"status"=>1,"datecreated"=>$time,"dateupdated"=>$time);
-                  //print_r($array_col);
+                   //print_r($array_col);
                   $affect=$dbf->insertTable("member",$array_col);
                 }
 
@@ -91,9 +91,10 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
                   "phone"=>$phone,"fax"=>$fax,"address"=>$address,"country_id"=>$country_id,"state"=>$state,
                   "postcode"=>$postcode,"dateupdated"=>$time);
 
-              $affect=$dbf->updateTable("member",$array_col,"id='".$_SESSION['member_id']."'");
+               $affect=$dbf->updateTable("member",$array_col,"id='".$_SESSION['member_id']."'");
             }
 
+			    $affect = array(1,2);
                 if($affect>0)
 				{
                     if($isEdit)
@@ -103,6 +104,7 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
                     }
                     else
                     {
+						
                         $query=$dbf->getDynamic("member","email='".$email."' and status=1","");
     					if($dbf->totalRows($query)>0)
     					{
@@ -114,6 +116,7 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
                             $_SESSION["Free"]=0;
 
                 		}
+						
                         //gui mail
                         $str="<html>
                               <head>
@@ -151,7 +154,7 @@ if(isset($_POST["ok"]) || isset($_POST["email"]) )
 
                                 $Subject  =  "A confirmation email members";
                                 require("/modum/class.phpmailer.php");
-                                $mail = new PHPMailer();
+                                $mail = new PHPMailer2();
                                 $SMTP_Host = $arraySMTPSERVER["host"];
                                 $SMTP_Port = 25;
                                 $SMTP_UserName = $arraySMTPSERVER["user"];

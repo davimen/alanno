@@ -136,14 +136,23 @@ if( ! $product->is_in_stock() || mfn_opts_get('shop-catalogue') || in_array( $pr
 				}
 				
 				echo '<a href="'. apply_filters( 'the_permalink', get_permalink() ) .'"><span class="product-loading-icon added-cart"></span></a>';
+				
+				//printf("<pre>%s</pre>",print_r($product,true)); 
+                $price_pro = 0;
+                if($product->sale_price){
+					$price_pro = $product->sale_price;
+				}else{
+					$price_pro = $product->regular_price;
+				}				
+				
 				echo '<div class="product_info">
-					<p class="product_name">Tên sản phẩm</p>
-					<p class="product_price">450.000 VND</p>
-					<form action="" method="">
-						<p class="product_number">Số lượng: <input type="text" name="product_number" placeholder="1" size="10"></p>
-						<p class="add2cart"><input type="submit" value="Thêm vào giỏ hàng"/></p>
-					</form>
-				</div>';	
+					<p class="product_name">'.$product->post->post_title.'</p>
+					<div class="product_price">'.$product->get_price_html().'</div>					
+					<p class="product_number">Số lượng: <input type="text" onkeypress="return nhapso(event,\'pro_'.$product->id.'\')"  id="pro_'.$product->id.'" name="pro_'.$product->id.'" placeholder="1" size="10" value="1"></p>
+					<p class="add2cart"><input type="button" onclick="addcart(\''.$product->id.'\',\'pro_'.$product->id.'\',\''.$price_pro.'\')" name="but_'.$product->id.'" value="Thêm vào giỏ hàng"/></p>					
+				</div>';
+				//echo $product->get_price_html();
+				
 			echo '</div>';
 		}
 		

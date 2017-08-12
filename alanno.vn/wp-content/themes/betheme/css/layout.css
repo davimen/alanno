@@ -1689,3 +1689,13 @@ dl > dt,.dark dl > dd,.dark .article_box .desc_wrapper p,.dark a.icon_bar,.dark 
 .home .shop_slider .shop_slider_ul li h4 a{
 	font-size: 14px !important;
 }
+
+#content_msg {
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    height: 30px;
+    border: 1px solid #000;
+}

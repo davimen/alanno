@@ -23,19 +23,9 @@ $rst = $dbf->getDynamic("shoppingcart","user = '".$_SESSION['login']."' and prod
 if($dbf->totalRows($rst)>0)
 {
             $row_item_cart = $dbf->nextData($rst);
-            $quantity_cart = $row_item_cart["quantity"];
-            // lay quntity_product
-            $info_product = $dbf->getInfoColum("article",$product_id);
+            $quantity_cart = $row_item_cart["quantity"];           
 
-            if($info_product["pro_quantity"]>($quantity_cart+$quantity))
-            {
-              $value = array("quantity"=>"quantity+".$quantity);
-            }else
-            {
-              $value = array("quantity"=>$info_product["pro_quantity"]);
-            }
-
-
+            $value = array("quantity"=>"quantity+".$quantity);
             $action = "";
             $where = "user = '".$_SESSION["login"]."' and productid = ".$product_id."";
             $affect=$dbf->updateTable("shoppingcart",$value,$where);
