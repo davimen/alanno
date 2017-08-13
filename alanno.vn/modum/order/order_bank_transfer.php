@@ -2,9 +2,9 @@
 <?php
     if(isset($_POST["cmd_place_order"]))
     {
-        $customer_note = $_POST["customer_notes"];
+        		
+		$customer_note = $_POST["customer_notes"];
         $tax_order = $_POST["tax_order"];
-
 
 
         if($tax_order!=1)
@@ -12,9 +12,11 @@
            $tax_order=0;
         }
 
+		
+		
         //write order
         $member_info = $dbf->getInfoColum("member",$_SESSION["member_id"]);
-
+		
         $state_info = $dbf->getInfoColum("shipping_method",$member_info["state"]);
 
         $member_shipping_address = $dbf->getInfoColumShipping("shipping_address",$_SESSION["member_id"]);
@@ -34,6 +36,7 @@
         $payment_method = $dbf->getInfoColum("payment_method",$_SESSION["payment_id"]);
         $rst = $dbf->getDynamic("shoppingcart","user = '".$_SESSION['login']."'","");
         $totalrow = $dbf->totalRows($rst);
+		
 
         $array_productid=array($totalrow);
 	    $array_quantity=array($totalrow);
@@ -48,32 +51,47 @@
             $i=0;
         	while($rowcom=$dbf->nextdata($rst))
         	{
-                $id          = $rowcom["id"];
+                
+				
+				$id          = $rowcom["id"];
                 $productid   = $rowcom["productid"];
-                $infoProduct = $dbf->getInfoColum("article",$productid);
-                //$price       = $rowcom["price"];
+                //$infoProduct = $dbf->getInfoColum("article",$productid);
+				
+				$args = array('p' => $productid, 'post_type' => 'product');
+				$loop = new WP_Query($args);
+				while ( $loop->have_posts() ) : $loop->the_post(); 
+					global $post;
+					global $product;					
+                
+				$price       = $rowcom["price"];
                 $quantity    = $rowcom["quantity"];
                 $dateorder   = $rowcom["dateorder"];
 
-                $pro_code = stripcslashes($infoProduct["pro_code"]);
-                $price = stripcslashes($infoProduct["price"]);
-                $discout = stripcslashes($infoProduct["discout"]);
-                $price_discout = $price -(($price * $discout)/100);
+                //$pro_code = stripcslashes($infoProduct["pro_code"]);
+                //$price = stripcslashes($infoProduct["price"]);
+                //$discout = 0;
+                //$price_discout = $price -(($price * $discout)/100);
 
-                $totalprice_item =  $price_discout * $quantity;
+                $totalprice_item =  $price * $quantity;
                 $totalgrand+= $totalprice_item;
 
                  // set array
                  $array_productid[$i] = $productid;
 	             $array_quantity[$i]  = $quantity;
+				 $array_nameproduct[$i]  = $product->post->post_title;
+				 $array_imagespro[$i]  = get_the_post_thumbnail_url();
                  $array_price[$i]     = $price_discout;
-                 $array_infoProduct[$i]     = $infoProduct;
+                 $array_infoProduct[$i]     = $product->post;
                  $array_totalprice_item[$i]     = $totalprice_item;
 
-                 $array_pro_quantity[$i] = $infoProduct["pro_quantity"];
+                 //$array_pro_quantity[$i] = $infoProduct["pro_quantity"];
+				 
+				 endwhile;
 
                $i++;
             }
+			
+			
             // code_order
             $code_order='';
 
@@ -82,6 +100,7 @@
             $ww = date('W');
             $d  = date('N');
             $xx = ($dbf->totalRows($dbf->getDynamic("orders","order_week = '".$ww."'","")))+1;
+			
             if($xx<10)
             {
              $xx = "0".$xx;
@@ -127,11 +146,11 @@
             }
 
             $array_col=array("code_order"=>$code_order,"member_id"=>$_SESSION["member_id"],"totalprice"=>$tonghoadon,"orderdate"=>time(),"order_paymode_id"=>$_SESSION["payment_id"],"legal_id"=>1,"phieugiamgia"=>$_SESSION["price_phieugiamgia"],"order_note"=>$customer_note,"order_week"=>$ww,"is_tax"=>$tax_order,"is_payment_shipping"=>$is_payment_shipping);
-            $dbf->insertTable("orders",$array_col);
-            $orderid=mysql_insert_id();
+			
+            $result = $dbf->insertTable("orders",$array_col);			
+            $orderid=$result[2];			
             $j=0;
-
-
+    
 
   $str="<html>
       <head>
@@ -216,11 +235,9 @@
   ";
 
   $str.="<table width='100%' height='100%' cellpadding='1' cellspacing='1' bgcolor='#000' style='min-height:400px;'>
-        <tr style='background:#FFFFFF'>
-          <td class='title' width='10%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Mã Sản phẩm</td>
+        <tr style='background:#FFFFFF'>          
           <td class='title' width='20%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Sản phẩm</td>
-          <td class='title' width='20%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Sản phẩm</td>
-          <td class='title' width='20%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Mô tả</td>
+          <td class='title' width='20%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Hình ảnh</td>
           <td class='title' width='8%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Số lượng</td>
           <td class='title' width='12%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold; text-align:right'>Đơn giá</td>
           <td class='title' width='12%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold; text-align:right'>Thành tiền</td>
@@ -229,29 +246,15 @@
     		{
                 $array_col_order_detail=array("orderid"=>$orderid,"productid"=> $array_productid[$j],"quantity"=>$array_quantity[$j],"price"=>$array_price[$j]);
                 $dbf->insertTable("orderdetail",$array_col_order_detail);
-                //  update lai so luong san pham
-                if($array_pro_quantity[$j]<$array_quantity[$j] || $array_pro_quantity[$j]==$array_quantity[$j])
-                {
-                  $value = array("pro_quantity"=>"pro_quantity-".$array_quantity[$j],"pro_end"=>1);
-                }else
-                {
-                  $value = array("pro_quantity"=>"pro_quantity-".$array_quantity[$j]);
-                }
-
-                $where = "id = '".$array_productid[$j]."'";
-                $affect=$dbf->updateTable("article",$value,$where);
-
+                
                 $str.="
-                    <tr style='background:#EBF1F6'>
-                      <td class='title' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>".$array_infoProduct[$j]["pro_code"]."</td>
-                      <td class='title' style='background: #fff; color: #000; height: 30px;'>".$array_infoProduct[$j]["title"]."</td>
-                      <td class='title' style='background: #fff; color: #000; height: 30px;'><img src='http://designercollection4you.com".$array_infoProduct[$j]["picture_thumbnail"]."' width='50' height='50' border='1'></td>
-                      <td class='title' style='background: #fff; color: #000; height: 30px;'>".$array_infoProduct[$j]["description"]."</td>
+                    <tr style='background:#EBF1F6'>                      
+                      <td class='title' style='background: #fff; color: #000; height: 30px;'>".$array_nameproduct[$j]."</td>
+                      <td class='title' style='background: #fff; color: #000; height: 30px;'><img src='".$array_imagespro[$j]."' width='50' height='50' border='1'></td>                      
                       <td class='title' style='background: #fff; color: #000; height: 30px;'>".$array_quantity[$j]."</td>
                       <td class='title' style='background: #fff; color: #000; height: 30px;text-align:right'>".$array_price[$j]."</td>
                       <td class='title' style='background: #fff; color: #000; height: 30px;text-align:right'>".$array_totalprice_item[$j]."</td>
                     </tr>";
-
 
                 $j++;
     		}
@@ -319,21 +322,21 @@
       </body></html>";
         //echo $str;
       //gui mail
-                                $Subject  =  "Hanhanghieu.com Order #".$code_order." has been placed successfully";
+                                $Subject  =  "alona.vn Order #".$code_order." has been placed successfully";
                                 require("modum/class.phpmailer.php");
-                                $mail = new PHPMailer();
+                                $mail = new PHPMailer2();
                                 $SMTP_Host = $arraySMTPSERVER["host"];
                                 $SMTP_Port = 25;
                                 $SMTP_UserName = $arraySMTPSERVER["user"];
                                 $SMTP_Password = $arraySMTPSERVER["password"];
 
                                 //$from = $SMTP_UserName;
-                                $from = "hanhanghieuus@yahoo.com";
-                                $fromName = "Hanhanghieu.com";
+                                $from = "info@alona.vn";
+                                $fromName = "alona.vn";
                                 $fromName_member = $member_info["firstname"]." ".$member_info["lastname"];
                                 if($_SESSION["Free"]==1)
                                 {
-                                  $to = "hanhanghieuus@yahoo.com";
+                                  $to = "info@alona.vn";
                                 }else
                                 {
                                   $to = $member_info["email"];
@@ -386,7 +389,9 @@
  <?php
     echo $info["payment_transfer"];
  ?>
- <h3>Quý khách có thắc mắc xin vui lòng liên hệ email <a href='mailto:hanhanghieuus@yahoo.com'> hanhanghieuus@yahoo.com</a>  hoặc số  điện thoại 0908934376</h3>
+ <h3>Quý khách có thắc mắc xin vui lòng liên hệ email <a href='mailto:info@alona.vn'> info@alona.vn</a>  hoặc số  0963 763 079 [Mr. Toàn]
+
+ </h3>
  <h3>Xin chân thành cảm ơn quý khách.</h3>
 
 

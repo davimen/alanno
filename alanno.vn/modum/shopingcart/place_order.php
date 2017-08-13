@@ -1,8 +1,6 @@
-
-
 <table class="table review margin-top" width="100%" cellpadding="0" cellspacing="0" border="0">
   <tbody>
-  <tr class="table-row">
+  <tr class="table-row"> 
     <td colspan="2" class="left">Sản phẩm trong đơn hàng của bạn</td>
   </tr>
    <?php
@@ -16,48 +14,42 @@
 	{
         $id          = $rowcom["id"];
         $productid   = $rowcom["productid"];
-        $infoProduct = $dbf->getInfoColum("article",$productid);
-        $catProduct  =  $dbf->getInfoColum("article_category",$infoProduct["article_category_id"]);
-
-
-          if($catProduct["parentid"]==0)
-          {
-            $pagecattitle0 = $catProduct["title_rewrite"];
-            $pagecattitle1 = $catProduct["title_rewrite"];
-          }
-          else
-          {
-             $infoCatPro2= $dbf->getInfoColum("article_category",$catProduct["parentid"]);
-             $pagecattitle0 = $infoCatPro2["title_rewrite"];
-             $pagecattitle1 = $catProduct["title_rewrite"];
-          }
-
-        //$price       = $rowcom["price"];
+		
+        $price       = $rowcom["price"];
         $quantity    = $rowcom["quantity"];
         $dateorder   = $rowcom["dateorder"];
+		
+		$args = array('p' => $productid, 'post_type' => 'product');
+		$loop = new WP_Query($args);
+		while ( $loop->have_posts() ) : $loop->the_post(); 
+			global $post;
+			global $product;
 
-        $pro_code = stripcslashes($infoProduct["pro_code"]);
-        $price = stripcslashes($infoProduct["price"]);
+        //$pro_code = stripcslashes($infoProduct["pro_code"]);
+        //$price = stripcslashes($infoProduct["price"]);
         $price_format = $utl->format($price);
-        $discout = stripcslashes($infoProduct["discout"]);
-        $price_discout = $price -(($price * $discout)/100);
-        $price_discout_format = $utl->format($price_discout);
+        //$discout = stripcslashes($infoProduct["discout"]);
+        //$price_discout = $price -(($price * $discout)/100);
+		
+        //$price_discout_format = $utl->format($price_discout);
 
-         $totalprice_item =  $price_discout * $quantity;
-         $totalprice_item_format = $utl->format($totalprice_item);
-         $totalgrand+= $totalprice_item;
+        $totalprice_item =  $price * $quantity;
+        $totalprice_item_format = $utl->price($totalprice_item);
+        $totalgrand+= $totalprice_item;
+		
+		$featured_img_url = get_the_post_thumbnail_url();
 
    ?>
    <tr class='<?=(($i%2==0)?"table-row":"")?>'>
   	<td width="60%">
-         <a href="/<?=$pagecattitle0?>/<?=$pagecattitle1?>/<?=$infoProduct['title_rewrite']?>.html" class="product-title"><img style="float: left; margin-right: 5px;" src="modum/image.php/image.jpg?image=<?=$infoProduct["picture_thumbnail"]?>&width=50&height=50" border="0" align="absmiddle"></a>
-         <a href="/<?=$pagecattitle0?>/<?=$pagecattitle1?>/<?=$infoProduct['title_rewrite']?>.html" class="product-title"><?=$infoProduct["title"]?></a>
-  		 <p class="sku" style="padding: 0px; margin: 0px">Mã sản phẩm: <?=$pro_code?></p>
+         <a href="<?php the_permalink(); ?>" class="product-title"><img style="float: left; margin-right: 5px; width:50px;height:50px" src="<?php echo $featured_img_url?>" border="0" align="absmiddle"></a>
+         <a href="<?php the_permalink(); ?>" class="product-title"><?php the_title(); ?></a>  		 
   	 </td>
-  	<td width="40%" class="center"><strong><?=$quantity?>&nbsp;x&nbsp;<?=$price_discout_format?>&nbsp;<?=CURRENCY?></strong>&nbsp;=&nbsp;<span><b><?=$totalprice_item_format?>&nbsp;<?=CURRENCY?></b></span></td>
+  	<td width="40%" class="center"><strong>Số lượng: <?php echo $quantity?>&nbsp;Thành tiền:&nbsp;<span><b><?=$totalprice_item_format?>&nbsp;<sup><?=CURRENCY?></sup></b></span></td>
   </tr>
 
   <?php
+		endwhile;		
         $i++;
      }
      }
@@ -66,7 +58,7 @@
   </table>
 
 
-   <?php echo $html->normalForm("frm_place_order",array("action"=>"checkout-complete.html","method"=>"post"));?>
+   <?php echo $html->normalForm("frm_place_order",array("action"=>"/checkout-complete.html","method"=>"post"));?>
 
      <table width="100%" cellpadding="3" cellspacing="0" border="1">
 
@@ -170,8 +162,8 @@
 
    <script type="text/javascript">
 
-$().ready(function() {
-$("#frm_place_order").validate({
+jQuery().ready(function() {
+jQuery("#frm_place_order").validate({
             debug: false,
             errorElement: "em",
             success: function(label) {

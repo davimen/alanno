@@ -25,6 +25,12 @@ if(empty($_SESSION["login"])){
     $_SESSION["Free"]=1;	
 }
 
+$rst = $dbf->getDynamic("shoppingcart","user = '".$_SESSION['login']."'","");
+$total_cart = 0;
+while($row = $dbf->nextData($rst)){
+	$total_cart = $total_cart + $row['quantity'];
+}
+
 if($URL[0]=='logout')
     $dbf->signout();
 ?>

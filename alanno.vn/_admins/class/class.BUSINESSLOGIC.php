@@ -442,8 +442,7 @@
 			}
 
             function update($tableName,&$arrayCol,$where,$idtmp) {
-                    //echo "cap nhat ";
-                    //exit;
+                    
 			        $utl=$this->getUtl();
                     $js=$this->getJs();
 					$colRewrite=array();
@@ -481,39 +480,7 @@
 									else
 											$colRewrite[]=$value;
 					}
-
-                    if($tableName=='article')
-                    {
-                        $pro_code = $_POST["pro_code"];
-                        if($pro_code!='')
-                        {
-                          $colInsert["pro_code"]=$this->checkProcodeUpdate($pro_code,$tableName,$idtmp);
-                        }
-                    }
-
-
-                    if($tableName=='article' || $tableName=='article_category' || $tableName=='article_nhasanxuat' )
-                    {
-                        $text=$utl->stripUnicode($_POST["title"]);
-                        $colInsert["title_rewrite"] = $utl->generate_url_from_text($text);
-                        $colInsert["title_rewrite"]=$this->checkRewiteUpdate($colInsert["title_rewrite"],$tableName,$idtmp);
-                        $colInsert["title_rewrite"]= strtolower($colInsert["title_rewrite"]);
-                    }
-
-					/*if(count($colRewrite)>0) {
-							foreach($colRewrite as $value) {
-									$data=$_POST[$value];
-									if(is_array($data)) {
-											list($k,$v)=each($data);
-											if(strip_tags($v)=="")
-													$text=$utl->stripUnicode($colInsert[$k]);
-											else
-													$text=$utl->stripUnicode($v);
-											$colInsert[$value]=$utl->generate_url_from_text($text);
-									}
-							}
-					}
-                    */
+					
                     if(!empty($idtmp))
                     {
                         $array[]=$idtmp;

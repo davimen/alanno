@@ -76,7 +76,7 @@
 						$sql='SELECT * FROM '.$tbName.'  '.$condition.'  '.$orderby;
                         //echo $sql;
 
-                           $rst=$this->doSQL($sql);
+                        $rst=$this->doSQL($sql);
 
 						return $rst;
 				}catch (Exception $ex)
@@ -144,8 +144,7 @@
 						$this->dbConnect();
 						$condition=(!empty($condition))?' WHERE '.$condition:'';
 						$sql="DELETE FROM ".$tbName." ".$condition;
-
-                        //echo"delect". $sql."\n";
+                       
                            $affect=$this->doNoSQL($sql);
 
                            unset($condition);
@@ -241,7 +240,8 @@
 			/* Execute sqlcommand with insert, update, delete query
 			-----------------------------------------------------------------*/
 			function doNoSQL($sql) {
-				try {
+				try {										
+						
 						$this->dbConnect();
 						$affect=mysql_query($sql) or die("Query has error");
 

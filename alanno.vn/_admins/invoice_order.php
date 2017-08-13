@@ -4,6 +4,10 @@
 		echo "<script>window.location.href='login.php'</script>";
         exit;
     	}
+		
+		define('WP_USE_THEMES', false);
+        require('../wp-blog-header.php');
+
         include str_replace('\\','/',dirname(__FILE__)).'/content_spaw/spaw.inc.php';
         include str_replace('\\','/',dirname(__FILE__)).'/class/class.DEFINE.php';
         include str_replace('\\','/',dirname(__FILE__)).'/class/class.HTML.php';
@@ -75,11 +79,18 @@
                 //$infoProduct = $dbf->getInfoColum("article",$productid);
                 $price       = $rowcom["price"];
                 $quantity    = $rowcom["quantity"];
+				
+				
+				$args = array('p' => $productid, 'post_type' => 'product');
+				$loop = new WP_Query($args);
+				while ( $loop->have_posts() ) : $loop->the_post(); 
+					global $post;
+					global $product;
 
 
 
 
-                $pro_code = stripcslashes($infoProduct["pro_code"]);
+                //$pro_code = stripcslashes($infoProduct["pro_code"]);
 
                 $totalprice_item =  $price * $quantity;
                 $totalgrand+= $totalprice_item;
@@ -88,8 +99,14 @@
                  $array_productid[$i] = $productid;
 	             $array_quantity[$i]  = $quantity;
                  $array_price[$i]     = $price;
-                 $array_infoProduct[$i]     = $infoProduct;
+				 $array_image[$i]     = get_the_post_thumbnail_url();
+				 $array_title[$i]     = $product->post->post_title;
+				 
+                 //$array_infoProduct[$i]     = $infoProduct;
+				 
                  $array_totalprice_item[$i]     = $totalprice_item;
+				 
+				 endwhile;
 
                $i++;
             }
@@ -196,7 +213,7 @@
 
   <table width='100%' height='100%' cellpadding='1' cellspacing='1' bgcolor='#000' style='min-height:400px;'>
         <tr style='background:#FFFFFF'>
-          <td class='title' width='15%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Mã sản phẩm</td>
+          
           <td class='title' width='30%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Sản phẩm</td>
           <td class='title' width='17%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Hình</td>
           <td class='title' width='10%' style='background: #EBF1F6; color: #000; height: 30px; font-weight: bold;'>Số lượng</td>
@@ -207,13 +224,11 @@
             $j=0;
     		while($j<$totalrow)
     		{
-
           ?>
-                    <tr style='background:#EBF1F6'>
-                      <td class='title' width='15%' style='background: #fff; color: #000; height: 30px;'><?=$array_infoProduct[$j]["pro_code"]?></td>
-                      <td class='title' width='30%' style='background: #fff; color: #000; height: 30px;'><?=$array_infoProduct[$j]["title"]?></td>
+                    <tr style='background:#EBF1F6'>                      
+                      <td class='title' width='30%' style='background: #fff; color: #000; height: 30px;'><?=$array_title[$j]?></td>
                       <td class='title' width='17%' style='background: #fff; color: #000; height: 30px;'>
-                      <img onerror="$(this).hide()" src="image.php/image.jpg?image=<?=$array_infoProduct[$j]["picture_thumbnail"]?>&width=50&height=50" border="0">
+                      <img onerror="$(this).hide()" src="<?=$array_image[$j]?>" height="50" border="0">
                       </td>
                       <td class='title' width='10%' style='background: #fff; color: #000; height: 30px;'><?=$array_quantity[$j]?></td>
                       <td class='title' width='12%' style='background: #fff; color: #000; height: 30px;text-align:right'><?=$utl->format($array_price[$j])?><sup>đ</sup></td>
@@ -230,7 +245,7 @@
             {
             echo"
         <tr style='background:#EBF1F6'>
-          <td colspan='5' class='title' width='85%' style='background: #fff; color: #000; height: 30px; font-weight: bold; text-align:right'>
+          <td colspan='4' class='title' width='85%' style='background: #fff; color: #000; height: 30px; font-weight: bold; text-align:right'>
             <h3>Tổng:</h3>
             <h3>Phí vận chuyển:</h3>
             <h3>Thuế(VAT):</h3>
@@ -241,7 +256,7 @@
 
             if($order_info["is_payment_shipping"]==1)
             {
-               echo "<h3>Nhận hàng tại trụ sở chính: xin vui lòng gọi số Hotline 0908934376 để hẹn giờ lấy hàng</h3>";
+               echo "<h3>Nhận hàng tại trụ sở chính: xin vui lòng gọi số Hotline 0963 763 079 [Mr. Toàn] để hẹn giờ lấy hàng</h3>";
             }else
             {
               echo "<h3>".$utl->format($price_shipping)."<sup>đ</sup></h3>";
@@ -256,7 +271,7 @@
            {
                echo"
         <tr style='background:#EBF1F6'>
-          <td colspan='5' class='title' width='85%' style='background: #fff; color: #000; height: 30px; font-weight: bold; text-align:right'>
+          <td colspan='4' class='title' width='85%' style='background: #fff; color: #000; height: 30px; font-weight: bold; text-align:right'>
             <h3>Tổng:</h3>
             <h3>Phí vận chuyển:</h3>";
              if($order_info["phieugiamgia"]>0)

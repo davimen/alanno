@@ -1,11 +1,5 @@
-<div class="sitepath"><?php include("modum/sitePath.php");?></div>
-<div class="left">
-    <?php include("modum/left.php");?>
-</div>
-<div class="right">
-<?php
-include("modum/sitePath.php");
-?>
+<div class="section_wrapper mcb-section-inner">
+<div class="pro_c">
 <?php
     // kiem tra neu chuyen khoan
     if($_SESSION["payment_id"]==1)
@@ -25,5 +19,6 @@ include("modum/sitePath.php");
 
 ?>
 
+</div>
 </div>
 <div class="clear"></div>

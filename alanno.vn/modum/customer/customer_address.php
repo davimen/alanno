@@ -1,8 +1,4 @@
-<style type="text/css">
-/*<![CDATA[*/
 
-/*]]>*/
-</style>
 <?php echo $html->normalForm("frmaddress",array("action"=>"custormer-checkout-step2.html","method"=>"post"));?>
 <div class="address_colum">
 <fieldset style="border: 0">
@@ -211,8 +207,8 @@
 ?>
 <script type="text/javascript">
 
-$().ready(function() {
-$("#frmaddress").validate({
+jQuery().ready(function() {
+jQuery("#frmaddress").validate({
             debug: false,
             errorElement: "em",
             success: function(label) {

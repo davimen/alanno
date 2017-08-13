@@ -25,7 +25,7 @@ while($row = $dbf->nextData($rst)){
    $price_format = $utl->format($price);
    $price_start = $row["price_start"];
    $price_start_format = $utl->format($price_start);
-   $date_end    = $row["date_end"];
+   $date_end    = $row["date_price_end"];
    $today = time();
    if($today<=$date_end)
    {

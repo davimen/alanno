@@ -38,8 +38,12 @@ if($_SESSION["Free"]==1)
 		}
 	}
 
-require 'captcharand.php';
-$_SESSION['captcha_id'] = strtoupper($strcaptcha);
+$char = strtoupper(substr(str_shuffle('abcdefghjkmnpqrstuvwxyz'), 0, 4));
+$strcaptcha = rand(1, 7) . rand(1, 7) . $char;
+if(!isset($_SESSION['captcha_id']) && $_SESSION['captcha_id']=="")
+{
+	$_SESSION['captcha_id'] = strtoupper($strcaptcha);	
+}
 ?>
 <?php
  echo $html->normalForm("frmchange",array("class"=>"","action"=>"","method"=>"post"));
@@ -138,7 +142,7 @@ jQuery("#frmchange").validate({
               captcha:
               {
                 required: true,
-                remote: "captchaprocess.php"
+                remote: "/captchaprocess.php"
               }
     		},
 

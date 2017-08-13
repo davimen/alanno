@@ -1,6 +1,8 @@
 <?php
-
 session_start();
+define('WP_USE_THEMES', false);
+require('../../wp-blog-header.php');
+
 include '../../class/defineConst.php';
 include '../../class/class.BUSINESSLOGIC.php';
 include '../../class/class.CSS.php';
@@ -21,40 +23,8 @@ $mang=array();
 $msg="";
 ?>
 
-<style type="text/css">
-/*<![CDATA[*/
-.contentMain {
-  font-size: 12px;
-  font-family: Arial;
-}
-a.news:link, a.news:visited {
-  text-decoration: none;
-  color: #E40141;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-a.news:hover {
-  text-decoration: underline;
-}
-
-.table_cart {
-  background: #ccc;
-  border: 2px solid #ccc;
-}
-
-.table_cart tr {
-  background: #fff;
-  margin: 1px;
-}
-.table_cart tr td {
-  background: #fff;
-}
-/*]]>*/
-</style>
-
 <script language="JavaScript" type="text/javascript">
-/*<![CDATA[*/
-function nhapso(evt,objectid){
+function nhapso2(evt,objectid){
 
 		var key=(!window.ActiveXObject)?evt.which:window.event.keyCode;
 		var values=document.getElementById(objectid).value;
@@ -79,8 +49,11 @@ function nhapso(evt,objectid){
 	}
 
 function updatecart(cart_id)
-   {
+{
         var quantity = document.getElementById('cart_'+cart_id).value;
+		if(parseInt(quantity)>0)
+        {
+		/*
         var pro_quantity = document.getElementById('cart_'+cart_id+'_quantity').value;
 
         if(parseInt(quantity)>0)
@@ -90,6 +63,7 @@ function updatecart(cart_id)
            alert("Lưu ý: Hiện sản phẩm chỉ còn có "+pro_quantity+" cái. Quý khách sẽ mua với số lượng còn lại?");
            quantity = pro_quantity;
          }
+		 */
 
         var url = "/updatecart.php";
         url+='?cart_id='+cart_id+'&quantity='+quantity;
@@ -126,15 +100,44 @@ function deletecart(cart_id)
 		}
 
 	}
-
-/*]]>*/
 </script>
+
+
+<style type="text/css">
+/*<![CDATA[*/
+.contentMain {
+  font-size: 12px;
+  font-family: Arial;
+}
+a.news:link, a.news:visited {
+  text-decoration: none;
+  color: #E40141;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+a.news:hover {
+  text-decoration: underline;
+}
+
+.table_cart {
+  background: #ccc;
+  border: 2px solid #ccc;
+}
+
+.table_cart tr {
+  background: #fff;
+  margin: 1px;
+}
+.table_cart tr td {
+  background: #fff;
+}
+/*]]>*/
+</style>
 
 <form name="frmcart" action="" method="post" class="table_cart">
   <div id="contentMain">
     <table width="100%" cellpadding="0" cellspacing="1" border="0">
-      <tr  valign="bottom" align="center">
-        <td width="15%"  class="boxGrey"><b>Mã sản phẩm</b></td>
+      <tr  valign="bottom" align="center">        
         <td width="25%" align="left"  class="boxGrey"   style="padding-left:20px;"><b>Sản phẩm</b></td>
         <td width="10%"  class="boxGrey"><b>Số lượng</b></td>
         <td width="15%"  class="boxGrey"><b>Thành tiền</b></td>
@@ -150,38 +153,33 @@ function deletecart(cart_id)
     {
 	while($rowcom=$dbf->nextdata($rst))
 	{
-       $id          = $rowcom["id"];
-       $productid   = $rowcom["productid"];
-       $infoProduct = $dbf->getInfoColum("article",$productid);
-
-          $infoCatPro= $dbf->getInfoColum("article_category",$infoProduct["article_category_id"]);
-          if($infoCatPro["parentid"]==0)
-          {
-            $pagecattitle0 = $infoCatPro["title_rewrite"];
-            $pagecattitle1 = $infoCatPro["title_rewrite"];
-          }
-          else
-          {
-             $infoCatPro2= $dbf->getInfoColum("article_category",$infoCatPro["parentid"]);
-             $pagecattitle0 = $infoCatPro2["title_rewrite"];
-             $pagecattitle1 = $infoCatPro["title_rewrite"];
-          }
-
-       //$price       = $rowcom["price"];
+       
+	   $id_cart          = $rowcom["id"];
+       $productid   = $rowcom["productid"]; 
+	   $price       = $rowcom["price"];
        $quantity    = $rowcom["quantity"];
        $dateorder   = $rowcom["dateorder"];
+		
+		
+		
+		
+        $args = array('p' => $productid, 'post_type' => 'product');
+		$loop = new WP_Query($args);
+		while ( $loop->have_posts() ) : $loop->the_post(); 
+			global $post;
+			global $product;
+			
+			//printf("<pre>%s</pre>",print_r($items));	  
+		
 
-
-
-          $pro_code = stripcslashes($infoProduct["pro_code"]);
-          $price = stripcslashes($infoProduct["price"]);
+          //$pro_code = stripcslashes($infoProduct["pro_code"]);
+          //$price = stripcslashes($infoProduct["price"]);
           $price_format = $utl->format($price);
-          $discout = stripcslashes($infoProduct["discout"]);
-          $price_discout = $price -(($price * $discout)/100);
-          $price_discout_format = $utl->price($price_discout);
+          //$discout = stripcslashes($infoProduct["discout"]);
+          //$price_discout = $price -(($price * $discout)/100);
+          //$price_discout_format = $utl->price($price_discout);
 
-
-           $totalprice_item =  $price_discout * $quantity;
+           $totalprice_item =  $price * $quantity;
            $totalprice_item_format = $utl->price($totalprice_item);
            $totalgrand+= $totalprice_item;
 
@@ -190,25 +188,32 @@ function deletecart(cart_id)
 
 	?>
       <tr class="txtnho" align="center" valign="bottom">
-        <td><?=$infoProduct["pro_code"]?></td>
+        
         <td align="left" style="padding-left:5px;">
-            <img style="cursor: pointer" align="absmiddle" onclick="parent.location.href='/<?=$pagecattitle0?>/<?=$pagecattitle1?>/<?=$infoProduct["title_rewrite"]?>.html'" style="float: left; border: 1px solid #ccc; padding: 2px; margin-right: 5px;" src="/modum/image.php?image=<?=$infoProduct["picture_thumbnail"]?>&width=40&height=40" border="0">
-            <span style="cursor: pointer" onclick="parent.location.href='/<?=$pagecattitle0?>/<?=$pagecattitle1?>/<?=$infoProduct["title_rewrite"]?>.html'"><?=$infoProduct["title"]?></span></td>
+		    <?php 
+				//the_post_thumbnail(); 
+				$featured_img_url = get_the_post_thumbnail_url();
+			?>
+            <img style="cursor: pointer" align="absmiddle" onclick="parent.location.href='<?php the_permalink(); ?>'" style="float: left; border: 1px solid #ccc; padding: 2px; margin-right: 5px;" src="<?php echo $featured_img_url?>" height="40" border="0">
+            <span style="cursor: pointer" onclick="parent.location.href='<?php the_permalink(); ?>'"><?php the_title(); ?></span></td>
         <td>
-            <input type="text" name="txt<?=$id?>" onkeypress="return nhapso(event,'cart_<?=$id?>')" id="cart_<?=$id?>" class="nd1" value="<?=$quantity?>" style="width:50px;" />
-            <input type="hidden" name="cart_<?=$id?>_quantity" id="cart_<?=$id?>_quantity" value="<?=$infoProduct["pro_quantity"]?>">
+            <input type="number" name="txt<?php echo $id_cart; ?>" id="cart_<?php echo $id_cart; ?>" class="nd1" value="<?=$quantity?>" style="width:50px;" />
+            <input type="hidden" name="cart_<?php echo $id_cart; ?>_quantity" id="cart_<?php echo $id_cart; ?>_quantity" value="<?=$infoProduct["pro_quantity"]?>">
 
         </td>
         <td align="center" ><?=$totalprice_item_format?>&nbsp;&nbsp;<?=CURRENCY?></td>
         <td style="text-align:right">
-              <a href="javascript:void(0)" class="news" onClick="updatecart('<?=$id?>');"><span style="padding-left:5px;">
+              <a href="javascript:void(0)" class="news" onClick="updatecart('<?php echo $id_cart; ?>');"><span style="padding-left:5px;">
               Cập nhật
               </span></a>&nbsp;|&nbsp;
-              <a href="javascript:void(0)" class="news" onClick="deletecart('<?=$id?>');"><span style="padding-left:5px;">
+              <a href="javascript:void(0)" class="news" onClick="deletecart('<?php echo $id_cart; ?>');"><span style="padding-left:5px;">
               Xóa
               </span></a>
         </td>
       </tr>
+	  
+	  <?php endwhile;?>
+	  
       <tr>
         <td colspan="5" height="1" bgcolor="#999999"></td>
       </tr>

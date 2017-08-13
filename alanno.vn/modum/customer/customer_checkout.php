@@ -1,5 +1,6 @@
-<?php include("modum/sitePath.php");?>
-<div class="title_header">Kiểm tra đặt hàng</div>
+<div class="section_wrapper mcb-section-inner">
+<div class="pro_c">
+
 <div class="content_checkout">
  <?php
    if($_SESSION["Free"]==1)
@@ -46,4 +47,5 @@
    }
  ?>
  </div>
+  </div>
 
